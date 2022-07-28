@@ -29,7 +29,7 @@ public class FrameMain extends JFrame {
 
 
     public FrameMain() {
-        super("App2");
+        super("Routs Logistic");
         createGUI();
     }
 
@@ -39,7 +39,6 @@ public class FrameMain extends JFrame {
         setMinimumSize(new Dimension(800, 600));
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         createMainPanel();
-
     }
 
     public void createMainPanel() {
@@ -218,7 +217,6 @@ public class FrameMain extends JFrame {
         constraints.weighty = 0.97;
         dataLeft.setBackground(Color.WHITE);
         mainDataLeft.add(dataLeft, constraints);
-
     }
 
     public void createMainDataRight() {
@@ -276,7 +274,6 @@ public class FrameMain extends JFrame {
         constraints.anchor = GridBagConstraints.WEST;
         constraints.insets.top = 8;
         constraints.insets.left = 8;//ok
-        //constraints.insets.right = 8;//ok
         constraints.insets.bottom = 8;//ok
 
 
