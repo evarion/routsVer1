@@ -7,12 +7,12 @@ public class FrameMain extends JFrame {
 
     static JPanel mainPanel = new JPanel();
 
-    JPanel menuLeftJP0 = new JPanel();
+    static JPanel menuLeftJP0 = new JPanel();
     JPanel jPanelLogo = new JPanel();
     JLabel logo = new JLabel("LOGO");
     JButton[] buttonsLeftMenu = new JButton[8];
 
-    JPanel menuTopJP0 = new JPanel();
+    static JPanel menuTopJP0 = new JPanel();
     JButton[] buttonsTopMenu = new JButton[25];
 
     static JPanel dataCentreJP0 = new JPanel();        //0
@@ -25,7 +25,7 @@ public class FrameMain extends JFrame {
     JButton[] buttonsMenuDataRight = new JButton[6];
     JButton[] buttonsMenuDataLeft = new JButton[8];
 
-    JPanel menuDownInfoJP0 = new JPanel();
+    static JPanel menuDownInfoJP0 = new JPanel();
 
 
     public FrameMain() {
@@ -54,7 +54,7 @@ public class FrameMain extends JFrame {
         constraints.gridheight = 1;
         constraints.weightx = 1.0;
         constraints.weighty = 0.1;
-        constraints.weightx = GridBagConstraints.NONE;// решение!
+        constraints.weightx = GridBagConstraints.NONE;//ok
         menuTopJP0.setBackground(Color.GRAY);
         createTopButtonPanel();
         mainPanel.add(menuTopJP0, constraints);
@@ -65,7 +65,7 @@ public class FrameMain extends JFrame {
         constraints.gridheight = 3;
         constraints.weightx = 0.97;
         constraints.weighty = 0.9;
-        constraints.weightx = GridBagConstraints.NONE;// решение!
+        constraints.weightx = GridBagConstraints.NONE;//ok
         menuLeftJP0.setBackground(Color.ORANGE);
         createLeftButtonPanel();
         mainPanel.add(menuLeftJP0, constraints);
@@ -91,7 +91,7 @@ public class FrameMain extends JFrame {
         menuDownInfoJP0.setBackground(Color.GRAY);
         mainPanel.add(menuDownInfoJP0, constraints);
     }
-    
+
 
     public void createLeftButtonPanel() {
         menuLeftJP0.setLayout(new GridBagLayout());
@@ -101,8 +101,8 @@ public class FrameMain extends JFrame {
 
         constraints.ipady = 30;
         constraints.insets.top = 10;
-        constraints.insets.left = 10;//решение!
-        constraints.insets.right = 10;//решение!
+        constraints.insets.left = 10;//ok
+        constraints.insets.right = 10;//ok
 
         logo.setBorder(BorderFactory.createEmptyBorder(35, 0, 0, 0));
         jPanelLogo.setPreferredSize(new Dimension(100, 70));
@@ -275,9 +275,9 @@ public class FrameMain extends JFrame {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.anchor = GridBagConstraints.WEST;
         constraints.insets.top = 8;
-        constraints.insets.left = 8;//решение!
-        //constraints.insets.right = 8;//решение!
-        constraints.insets.bottom = 8;//решение!
+        constraints.insets.left = 8;//ok
+        //constraints.insets.right = 8;//ok
+        constraints.insets.bottom = 8;//ok
 
 
         for (int i = 0; i < buttonsMenuDataRight.length; i++) {
