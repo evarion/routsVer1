@@ -41,6 +41,7 @@ public class FrameMain extends JFrame {
         createMainPanel();
     }
 
+
     public void createMainPanel() {
         add(mainPanel);
         mainPanel.setLayout(new GridBagLayout());
