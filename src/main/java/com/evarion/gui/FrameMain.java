@@ -2,6 +2,9 @@ package com.evarion.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class FrameMain extends JFrame {
 
@@ -14,6 +17,7 @@ public class FrameMain extends JFrame {
 
     static JPanel menuTopJP0 = new JPanel();
     JButton[] buttonsTopMenu = new JButton[25];
+    JButton jButtonMainMenu = new JButton("MENU");
 
     static JPanel dataCentreJP0 = new JPanel();        //0
     static JPanel mainDataLeft = new JPanel();         //1
@@ -39,6 +43,7 @@ public class FrameMain extends JFrame {
         setMinimumSize(new Dimension(800, 600));
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         createMainPanel();
+        testMenuButton();//Test Button Menu
     }
 
 
@@ -150,8 +155,8 @@ public class FrameMain extends JFrame {
         for (int i = 0; i < buttonsTopMenu.length; i++) {
             buttonsTopMenu[i] = new JButton();
             buttonsTopMenu[i].setName("jButtonTop" + i);
-            buttonsTopMenu[i].setPreferredSize(new Dimension(20, 20));
-            buttonsTopMenu[i].setMinimumSize(new Dimension(20, 20));
+            buttonsTopMenu[i].setPreferredSize(new Dimension(25, 25));
+            buttonsTopMenu[i].setMinimumSize(new Dimension(25, 25));
             actionsButtonsTopPanel(i);
         }
 
@@ -174,6 +179,12 @@ public class FrameMain extends JFrame {
         }
         constraints.weightx = 0.7;
         menuTopJP0.add(jPanelEmpty, constraints);
+
+        jButtonMainMenu.setPreferredSize(new Dimension(80, 25));
+        jButtonMainMenu.setMinimumSize(new Dimension(80, 25));
+
+        constraints.anchor = GridBagConstraints.EAST;
+        menuTopJP0.add(jButtonMainMenu, constraints);
     }
 
     public void createDataPanel() {
@@ -312,5 +323,40 @@ public class FrameMain extends JFrame {
             case 0:
                 buttonsTopMenu[0].addActionListener(new ActionButtonListeners.TestButtonFromAction());
         }
+
+    }
+
+
+    public void testMenuButton() {//Test Button Menu
+        final JFrame frame = new JFrame();
+        frame.setPreferredSize(new Dimension(600, 400));
+        final JToolBar toolBar = new JToolBar();
+
+        //Create the popup menu.
+        final JPopupMenu popup = new JPopupMenu();
+        popup.add(new JMenuItem(new AbstractAction("Option 1") {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(frame, "Option 1 selected");
+            }
+        }));
+        popup.add(new JMenuItem(new AbstractAction("Option 2") {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(frame, "Option 2 selected");
+            }
+        }));
+
+        final JButton button = new JButton("Options");
+        button.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                popup.show(e.getComponent(), e.getX(), e.getY());
+            }
+        });
+        toolBar.add(button);
+
+        frame.getContentPane().add(toolBar, BorderLayout.NORTH);
+        frame.pack();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 }
