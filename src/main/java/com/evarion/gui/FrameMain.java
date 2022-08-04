@@ -18,6 +18,7 @@ public class FrameMain extends JFrame {
     static JPanel menuTopJP0 = new JPanel();
     JButton[] buttonsTopMenu = new JButton[25];
     JButton jButtonMainMenu = new JButton("MENU");
+    JPopupMenu menu = new JPopupMenu();
 
     static JPanel dataCentreJP0 = new JPanel();        //0
     static JPanel mainDataLeft = new JPanel();         //1
@@ -43,7 +44,7 @@ public class FrameMain extends JFrame {
         setMinimumSize(new Dimension(800, 600));
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         createMainPanel();
-        testMenuButton();//Test Button Menu
+
     }
 
 
@@ -184,6 +185,8 @@ public class FrameMain extends JFrame {
         jButtonMainMenu.setMinimumSize(new Dimension(80, 25));
 
         constraints.anchor = GridBagConstraints.EAST;
+        createMainMenuButton();//test
+
         menuTopJP0.add(jButtonMainMenu, constraints);
     }
 
@@ -314,6 +317,35 @@ public class FrameMain extends JFrame {
     }
 
 
+    public void createMainMenuButton() {
+        menu.add(new JMenuItem(new AbstractAction("First Item Menu Component") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        }));
+        menu.add(new JMenuItem(new AbstractAction("Next Item Menu Component") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        }));
+        jButtonMainMenu.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+                int yPositionMenu = jButtonMainMenu.getY() + 20;
+                menu.show(e.getComponent(), menu.getX(), yPositionMenu);
+            }
+        });
+        menu.add(new JMenuItem(new AbstractAction("Next Item Menu Component") {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        }));
+
+    }
+
+
     public void actionsButtonsTopPanel(int numButton) {
         switch (numButton) {
             case 24:
@@ -327,36 +359,4 @@ public class FrameMain extends JFrame {
     }
 
 
-    public void testMenuButton() {//Test Button Menu
-        final JFrame frame = new JFrame();
-        frame.setPreferredSize(new Dimension(600, 400));
-        final JToolBar toolBar = new JToolBar();
-
-        //Create the popup menu.
-        final JPopupMenu popup = new JPopupMenu();
-        popup.add(new JMenuItem(new AbstractAction("Option 1") {
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(frame, "Option 1 selected");
-            }
-        }));
-        popup.add(new JMenuItem(new AbstractAction("Option 2") {
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(frame, "Option 2 selected");
-            }
-        }));
-
-        final JButton button = new JButton("Options");
-        button.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent e) {
-                popup.show(e.getComponent(), e.getX(), e.getY());
-            }
-        });
-        toolBar.add(button);
-
-        frame.getContentPane().add(toolBar, BorderLayout.NORTH);
-        frame.pack();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
 }
