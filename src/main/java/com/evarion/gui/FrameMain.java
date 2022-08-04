@@ -17,8 +17,8 @@ public class FrameMain extends JFrame {
 
     static JPanel menuTopJP0 = new JPanel();
     JButton[] buttonsTopMenu = new JButton[25];
-    JButton jButtonMainMenu = new JButton("MENU");
-    JPopupMenu menu = new JPopupMenu();
+    static JButton jButtonMainMenu = new JButton("MENU");
+    static JPopupMenu menu = new JPopupMenu();
 
     static JPanel dataCentreJP0 = new JPanel();        //0
     static JPanel mainDataLeft = new JPanel();         //1
@@ -185,7 +185,7 @@ public class FrameMain extends JFrame {
         jButtonMainMenu.setMinimumSize(new Dimension(80, 25));
 
         constraints.anchor = GridBagConstraints.EAST;
-        createMainMenuButton();//test
+        MainMenuItem.createMainMenuButton();//test
 
         menuTopJP0.add(jButtonMainMenu, constraints);
     }
@@ -314,35 +314,6 @@ public class FrameMain extends JFrame {
         jPanelEmpty.setMinimumSize(new Dimension(20, 20));
         jPanelEmpty.setBackground(Color.gray);
         menuDownInfoJP0.add(jPanelEmpty);
-    }
-
-
-    public void createMainMenuButton() {
-        menu.add(new JMenuItem(new AbstractAction("First Item Menu Component") {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        }));
-        menu.add(new JMenuItem(new AbstractAction("Next Item Menu Component") {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        }));
-        jButtonMainMenu.addMouseListener(new MouseAdapter() {
-            public void mousePressed(MouseEvent e) {
-                int yPositionMenu = jButtonMainMenu.getY() + 20;
-                menu.show(e.getComponent(), menu.getX(), yPositionMenu);
-            }
-        });
-        menu.add(new JMenuItem(new AbstractAction("Next Item Menu Component") {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        }));
-
     }
 
 
