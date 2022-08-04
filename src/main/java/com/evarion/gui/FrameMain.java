@@ -2,6 +2,7 @@ package com.evarion.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import com.evarion.gui.MainMenuItem;
 
 public class FrameMain extends JFrame {
 
