@@ -2,9 +2,6 @@ package com.evarion.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class FrameMain extends JFrame {
 
@@ -19,6 +16,7 @@ public class FrameMain extends JFrame {
     JButton[] buttonsTopMenu = new JButton[25];
     static JButton jButtonMainMenu = new JButton("MENU");
     static JPopupMenu menu = new JPopupMenu();
+
 
     static JPanel dataCentreJP0 = new JPanel();        //0
     static JPanel mainDataLeft = new JPanel();         //1
