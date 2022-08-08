@@ -1,7 +1,9 @@
 package com.evarion.gui;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 
 public class FrameMain extends JFrame {
@@ -35,18 +37,18 @@ public class FrameMain extends JFrame {
     MainMenuItem mainMenuItem = new MainMenuItem();
 
 
-    public FrameMain() {
+    public FrameMain() throws IOException {
         super("Routs Logistic");
 
         createGUI();
     }
 
-    public void createGUI() {
+    public void createGUI() throws IOException {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocation(50, 40);
         setMinimumSize(new Dimension(800, 600));
-
+        setIconImage(ImageIO.read(FrameMain.class.getResourceAsStream("/4.png")));
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         createMainPanel();
 
