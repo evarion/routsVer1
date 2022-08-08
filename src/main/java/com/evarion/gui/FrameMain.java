@@ -2,9 +2,10 @@ package com.evarion.gui;
 
 import javax.swing.*;
 import java.awt.*;
-import com.evarion.gui.MainMenuItem;
+
 
 public class FrameMain extends JFrame {
+
 
     static JPanel mainPanel = new JPanel();
 
@@ -31,16 +32,21 @@ public class FrameMain extends JFrame {
 
     static JPanel menuDownInfoJP0 = new JPanel();
 
+    MainMenuItem mainMenuItem = new MainMenuItem();
+
 
     public FrameMain() {
         super("Routs Logistic");
+
         createGUI();
     }
 
     public void createGUI() {
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocation(50, 40);
         setMinimumSize(new Dimension(800, 600));
+
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         createMainPanel();
 
@@ -184,7 +190,7 @@ public class FrameMain extends JFrame {
         jButtonMainMenu.setMinimumSize(new Dimension(80, 25));
 
         constraints.anchor = GridBagConstraints.EAST;
-        MainMenuItem.createMainMenuButton();//test
+        mainMenuItem.createMainMenuButton();//test
 
         menuTopJP0.add(jButtonMainMenu, constraints);
     }
