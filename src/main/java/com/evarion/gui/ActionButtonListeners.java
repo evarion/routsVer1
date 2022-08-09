@@ -10,18 +10,16 @@ public class ActionButtonListeners {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (!dataRightActive) {
-
-                dataRightActive = true;
                 FrameMain.dataSplitPaneHorizontal.getRightComponent().setVisible(false);
                 FrameMain.dataSplitPaneHorizontal.setDividerSize(0);
                 FrameMain.dataSplitPaneHorizontal.updateUI();
-
+                dataRightActive = true;
 
             } else {
                 FrameMain.dataSplitPaneHorizontal.getRightComponent().setVisible(true);
                 FrameMain.dataSplitPaneHorizontal.setDividerSize(10);
-                dataRightActive = false;
                 FrameMain.dataSplitPaneHorizontal.updateUI();
+                dataRightActive = false;
 
 
             }
