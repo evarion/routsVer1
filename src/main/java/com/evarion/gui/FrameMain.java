@@ -23,12 +23,14 @@ public class FrameMain extends JFrame {
 
 
     static JPanel dataCentreJP0 = new JPanel();        //0
+
     static JPanel mainDataLeft = new JPanel();         //1
     static JPanel menuDataLeft = new JPanel();         //2
     static JPanel dataLeft = new JPanel();             //2
     static JPanel mainDataRight = new JPanel();        //1
     static JPanel menuDataRight = new JPanel();        //2
     static JPanel dataRight = new JPanel();            //2
+    static JSplitPane dataSplitPaneHorizontal = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, mainDataLeft, mainDataRight);//3
     JPanel dataRightTop = new JPanel();                //3
     JPanel dataRightBottom = new JPanel();             //3
 
@@ -54,7 +56,6 @@ public class FrameMain extends JFrame {
         setIconImage(ImageIO.read(FrameMain.class.getResourceAsStream("/logo1.png")));
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         createMainPanel();
-
     }
 
 
@@ -94,6 +95,7 @@ public class FrameMain extends JFrame {
         constraints.weighty = 0.7;
         dataCentreJP0.setBackground(Color.GRAY.brighter());
         createDataPanel();
+
         mainPanel.add(dataCentreJP0, constraints);
 
         constraints.gridx = 1;
@@ -204,23 +206,22 @@ public class FrameMain extends JFrame {
         dataCentreJP0.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
+        //constraints.weighty = GridBagConstraints.NONE;
 
         constraints.gridx = 0;
         constraints.gridy = 0;
-        constraints.weightx = 0.8;
+        constraints.weightx = 1.0;
         constraints.weighty = 1.0;
+
         mainDataLeft.setBackground(Color.WHITE);
         createMainDataLeft(); //
-        dataCentreJP0.add(mainDataLeft, constraints);
-
-        constraints.gridx = 1;
-        constraints.gridy = 0;
-        constraints.weightx = 0.2;
-        constraints.weighty = 1.0;
         mainDataRight.setBackground(Color.GRAY.brighter());
         createMainDataRight(); //
-        dataCentreJP0.add(mainDataRight, constraints);
+
+        dataSplitPaneHorizontal.setResizeWeight(0.8);
+        dataCentreJP0.add(dataSplitPaneHorizontal, constraints);
     }
+
 
     public void createMainDataLeft() {
         mainDataLeft.setLayout(new GridBagLayout());
@@ -244,6 +245,7 @@ public class FrameMain extends JFrame {
         mainDataLeft.add(dataLeft, constraints);
     }
 
+
     public void createMainDataRight() {
         mainDataRight.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -264,6 +266,7 @@ public class FrameMain extends JFrame {
         constraints.weighty = 0.97;
         dataRight.setBackground(Color.LIGHT_GRAY);
         createDataRightTopBottom();
+
         mainDataRight.add(dataRight, constraints);
     }
 
@@ -318,29 +321,25 @@ public class FrameMain extends JFrame {
         menuDataRight.add(jPanelEmpty, constraints);
     }
 
+
     public void createDataRightTopBottom() {
         dataRight.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
+        constraints.weighty = GridBagConstraints.NONE;
+        JSplitPane splitPaneVertical = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.weightx = 1.0;
-        constraints.weighty = 0.5;
-      //  constraints.weighty = GridBagConstraints.NONE;
+        constraints.weighty = 1.0;
         dataRightTop.setBackground(Color.LIGHT_GRAY);
-
-        dataRight.add(dataRightTop, constraints);
-
-        constraints.gridx = 0;
-        constraints.gridy = 1;
-        constraints.weightx=1.0;
-        constraints.weighty=0.5;
         dataRightBottom.setBackground(Color.GRAY);
 
-        dataRight.add(dataRightBottom,constraints);
-
-
+        splitPaneVertical.setResizeWeight(0.5);
+        splitPaneVertical.setTopComponent(dataRightTop);
+        splitPaneVertical.setBottomComponent(dataRightBottom);
+        dataRight.add(splitPaneVertical, constraints);
     }
 
 
