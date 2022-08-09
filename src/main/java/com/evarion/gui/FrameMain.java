@@ -29,6 +29,9 @@ public class FrameMain extends JFrame {
     static JPanel mainDataRight = new JPanel();        //1
     static JPanel menuDataRight = new JPanel();        //2
     static JPanel dataRight = new JPanel();            //2
+    JPanel dataRightTop = new JPanel();                //3
+    JPanel dataRightBottom = new JPanel();             //3
+
     JButton[] buttonsMenuDataRight = new JButton[6];
     JButton[] buttonsMenuDataLeft = new JButton[8];
 
@@ -260,6 +263,7 @@ public class FrameMain extends JFrame {
         constraints.weightx = 1.0;
         constraints.weighty = 0.97;
         dataRight.setBackground(Color.LIGHT_GRAY);
+        createDataRightTopBottom();
         mainDataRight.add(dataRight, constraints);
     }
 
@@ -312,6 +316,31 @@ public class FrameMain extends JFrame {
         constraints.weightx = 0.2;
         jPanelEmpty.setBackground(Color.BLACK);
         menuDataRight.add(jPanelEmpty, constraints);
+    }
+
+    public void createDataRightTopBottom() {
+        dataRight.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.fill = GridBagConstraints.BOTH;
+
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.weightx = 1.0;
+        constraints.weighty = 0.5;
+      //  constraints.weighty = GridBagConstraints.NONE;
+        dataRightTop.setBackground(Color.LIGHT_GRAY);
+
+        dataRight.add(dataRightTop, constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        constraints.weightx=1.0;
+        constraints.weighty=0.5;
+        dataRightBottom.setBackground(Color.GRAY);
+
+        dataRight.add(dataRightBottom,constraints);
+
+
     }
 
 
