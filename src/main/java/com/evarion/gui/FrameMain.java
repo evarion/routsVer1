@@ -23,7 +23,7 @@ public class FrameMain extends JFrame {
 
 
     static JPanel dataCentreJP0 = new JPanel();        //0
-
+    
     static JPanel mainDataLeft = new JPanel();         //1
     static JPanel menuDataLeft = new JPanel();         //2
     static JPanel dataLeft = new JPanel();             //2
@@ -36,6 +36,7 @@ public class FrameMain extends JFrame {
 
     JButton[] buttonsMenuDataRight = new JButton[6];
     JButton[] buttonsMenuDataLeft = new JButton[8];
+    static JPanel jVisiblePanelMenuDataLeft = new JPanel();
 
     static JPanel menuDownInfoJP0 = new JPanel();
 
@@ -70,7 +71,7 @@ public class FrameMain extends JFrame {
         constraints.gridwidth = 3;
         constraints.gridheight = 1;
         constraints.weightx = 1.0;
-        constraints.weighty = 0.1;
+        constraints.weighty = 0.001; //0.1 //visible LeftMenu
         constraints.weightx = GridBagConstraints.NONE;//ok
         menuTopJP0.setBackground(Color.GRAY);
         createTopButtonPanel();
@@ -92,7 +93,7 @@ public class FrameMain extends JFrame {
         constraints.gridwidth = 2;
         constraints.gridheight = 1;
         constraints.weightx = 0.03;
-        constraints.weighty = 0.7;
+        constraints.weighty = 0.9;//visible LeftMenu constraints.weighty = 0.7;
         dataCentreJP0.setBackground(Color.GRAY.brighter());
         createDataPanel();
 
@@ -187,8 +188,10 @@ public class FrameMain extends JFrame {
                 constraints.insets.right = 15;
                 count = 1;
             }
+            constraints.insets.top = 5;//visible LeftMenu
             gridX = gridX + 1;
             menuTopJP0.add(jButton, constraints);
+            constraints.insets.top = 10;//visible LeftMenu
         }
         constraints.weightx = 0.7;
         menuTopJP0.add(jPanelEmpty, constraints);
@@ -273,9 +276,17 @@ public class FrameMain extends JFrame {
 
     public void createButtonMenuLeft() {
         JPanel jPanelEmpty = new JPanel();
+
         menuDataLeft.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.anchor = GridBagConstraints.WEST;
+        constraints.insets.left = 110;
+        jVisiblePanelMenuDataLeft.setBackground(Color.darkGray);
+        jVisiblePanelMenuDataLeft.setVisible(false);
+
+        menuDataLeft.add(jVisiblePanelMenuDataLeft, constraints);
+
+        constraints.weightx = GridBagConstraints.NONE;
         constraints.insets.top = 8;
         constraints.insets.left = 8;
         constraints.insets.bottom = 8;
@@ -286,6 +297,7 @@ public class FrameMain extends JFrame {
             buttonsMenuDataLeft[i].setPreferredSize(new Dimension(20, 20));
             buttonsMenuDataLeft[i].setMinimumSize(new Dimension(20, 20));
         }
+
 
         for (JButton jButton : buttonsMenuDataLeft) {
             menuDataLeft.add(jButton, constraints);
@@ -345,8 +357,11 @@ public class FrameMain extends JFrame {
 
     public void createInfoPanel() {
         JPanel jPanelEmpty = new JPanel();
-        jPanelEmpty.setPreferredSize(new Dimension(20, 20));
-        jPanelEmpty.setMinimumSize(new Dimension(20, 20));
+        menuDownInfoJP0.setLayout(new GridBagLayout());
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.weighty = GridBagConstraints.NONE;
+        jPanelEmpty.setPreferredSize(new Dimension(30, 30));
+        jPanelEmpty.setMinimumSize(new Dimension(30, 30));
         jPanelEmpty.setBackground(Color.gray);
         menuDownInfoJP0.add(jPanelEmpty);
     }
