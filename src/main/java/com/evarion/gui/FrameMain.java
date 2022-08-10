@@ -23,7 +23,7 @@ public class FrameMain extends JFrame {
 
 
     static JPanel dataCentreJP0 = new JPanel();        //0
-    
+
     static JPanel mainDataLeft = new JPanel();         //1
     static JPanel menuDataLeft = new JPanel();         //2
     static JPanel dataLeft = new JPanel();             //2
@@ -54,6 +54,7 @@ public class FrameMain extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocation(50, 40);
         setMinimumSize(new Dimension(800, 600));
+
         setIconImage(ImageIO.read(FrameMain.class.getResourceAsStream("/logo1.png")));
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         createMainPanel();
@@ -165,12 +166,14 @@ public class FrameMain extends JFrame {
         jPanelEmpty2.setBackground(Color.GRAY);
         menuTopJP0.add(jPanelEmpty2, constraints);
 
+        Icon icon = new ImageIcon("images/leftMenuVisible.png");
 
         for (int i = 0; i < buttonsTopMenu.length; i++) {
             buttonsTopMenu[i] = new JButton();
             buttonsTopMenu[i].setName("jButtonTop" + i);
             buttonsTopMenu[i].setPreferredSize(new Dimension(25, 25));
             buttonsTopMenu[i].setMinimumSize(new Dimension(25, 25));
+            buttonsTopMenu[0].setIcon(icon);
             actionsButtonsTopPanel(i);
         }
 
@@ -193,14 +196,18 @@ public class FrameMain extends JFrame {
             menuTopJP0.add(jButton, constraints);
             constraints.insets.top = 10;//visible LeftMenu
         }
+
         constraints.weightx = 0.7;
         menuTopJP0.add(jPanelEmpty, constraints);
+
 
         jButtonMainMenu.setPreferredSize(new Dimension(80, 25));
         jButtonMainMenu.setMinimumSize(new Dimension(80, 25));
 
         constraints.anchor = GridBagConstraints.EAST;
         mainMenuItem.createMainMenuButton();//test
+
+
 
         menuTopJP0.add(jButtonMainMenu, constraints);
     }
@@ -368,6 +375,8 @@ public class FrameMain extends JFrame {
 
 
     public void actionsButtonsTopPanel(int numButton) {
+
+
         switch (numButton) {
             case 24:
                 buttonsTopMenu[24].addActionListener(new ActionButtonListeners.ChangeEventActionFromAction());
@@ -375,6 +384,8 @@ public class FrameMain extends JFrame {
                 break;
             case 0:
                 buttonsTopMenu[0].addActionListener(new ActionButtonListeners.TestButtonFromAction());
+
+
         }
 
     }
