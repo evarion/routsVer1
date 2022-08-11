@@ -53,7 +53,7 @@ public class FrameMain extends JFrame {
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocation(50, 40);
-        setMinimumSize(new Dimension(800, 600));
+        setMinimumSize(new Dimension(920, 640));
 
         setIconImage(ImageIO.read(FrameMain.class.getResourceAsStream("/logo1.png")));
         setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -166,14 +166,13 @@ public class FrameMain extends JFrame {
         jPanelEmpty2.setBackground(Color.GRAY);
         menuTopJP0.add(jPanelEmpty2, constraints);
 
-        Icon icon = new ImageIcon("images/leftMenuVisible.png");
 
         for (int i = 0; i < buttonsTopMenu.length; i++) {
             buttonsTopMenu[i] = new JButton();
             buttonsTopMenu[i].setName("jButtonTop" + i);
             buttonsTopMenu[i].setPreferredSize(new Dimension(25, 25));
             buttonsTopMenu[i].setMinimumSize(new Dimension(25, 25));
-            buttonsTopMenu[0].setIcon(icon);
+
             actionsButtonsTopPanel(i);
         }
 
@@ -207,8 +206,8 @@ public class FrameMain extends JFrame {
         constraints.anchor = GridBagConstraints.EAST;
         mainMenuItem.createMainMenuButton();//test
 
-
-
+        constraints.insets.top = 5;
+        constraints.insets.bottom = 3;
         menuTopJP0.add(jButtonMainMenu, constraints);
     }
 
@@ -376,15 +375,19 @@ public class FrameMain extends JFrame {
 
     public void actionsButtonsTopPanel(int numButton) {
 
+        Icon leftMenuVisible = new ImageIcon("images/leftMenuVisible.png");
+        Icon rightMenuVisible = new ImageIcon("images/RightMenuVisible.png");
 
         switch (numButton) {
             case 24:
                 buttonsTopMenu[24].addActionListener(new ActionButtonListeners.ChangeEventActionFromAction());
+                buttonsTopMenu[24].setIcon(rightMenuVisible);
                 buttonsTopMenu[24].setToolTipText("Показать/Скрыть окно");
                 break;
             case 0:
                 buttonsTopMenu[0].addActionListener(new ActionButtonListeners.TestButtonFromAction());
-
+                buttonsTopMenu[0].setToolTipText("Показать/Скрыть Меню");
+                buttonsTopMenu[0].setIcon(leftMenuVisible);
 
         }
 
