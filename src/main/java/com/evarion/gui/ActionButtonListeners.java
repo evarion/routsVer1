@@ -11,15 +11,15 @@ public class ActionButtonListeners {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (!dataRightActive) {
-                FrameMain.dataSplitPaneHorizontal.getRightComponent().setVisible(false);
-                FrameMain.dataSplitPaneHorizontal.setDividerSize(0);
-                FrameMain.dataSplitPaneHorizontal.updateUI();
+                DataPanel.dataSplitPaneHorizontal.getRightComponent().setVisible(false);
+                DataPanel.dataSplitPaneHorizontal.setDividerSize(0);
+                DataPanel.dataSplitPaneHorizontal.updateUI();
                 dataRightActive = true;
 
             } else {
-                FrameMain.dataSplitPaneHorizontal.getRightComponent().setVisible(true);
-                FrameMain.dataSplitPaneHorizontal.setDividerSize(10);
-                FrameMain.dataSplitPaneHorizontal.updateUI();
+                DataPanel.dataSplitPaneHorizontal.getRightComponent().setVisible(true);
+                DataPanel.dataSplitPaneHorizontal.setDividerSize(10);
+                DataPanel.dataSplitPaneHorizontal.updateUI();
                 dataRightActive = false;
             }
         }
@@ -28,18 +28,18 @@ public class ActionButtonListeners {
     static class TestButtonFromAction implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            int position = FrameMain.dataSplitPaneHorizontal.getDividerLocation();
+            int position = DataPanel.dataSplitPaneHorizontal.getDividerLocation();
             if (!leftMenuActive) {
                 FrameMain.menuLeftJP0.setVisible(false);
                 FrameMain.jVisiblePanelMenuDataLeft.setVisible(true);
-                FrameMain.dataSplitPaneHorizontal.setDividerLocation(position + 120);
-                FrameMain.dataSplitPaneHorizontal.updateUI();
+                DataPanel.dataSplitPaneHorizontal.setDividerLocation(position + 120);
+                DataPanel.dataSplitPaneHorizontal.updateUI();
                 leftMenuActive = true;
 
             } else {
                 FrameMain.menuLeftJP0.setVisible(true);
-                FrameMain.dataSplitPaneHorizontal.setDividerLocation(position - 120);
-                FrameMain.dataSplitPaneHorizontal.updateUI();
+                DataPanel.dataSplitPaneHorizontal.setDividerLocation(position - 120);
+                DataPanel.dataSplitPaneHorizontal.updateUI();
                 FrameMain.jVisiblePanelMenuDataLeft.setVisible(false);
                 leftMenuActive = false;
             }
