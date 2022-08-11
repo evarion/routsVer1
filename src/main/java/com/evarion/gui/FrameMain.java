@@ -1,5 +1,6 @@
 package com.evarion.gui;
 
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +8,6 @@ import java.io.IOException;
 
 
 public class FrameMain extends JFrame {
-
 
     static JPanel mainPanel = new JPanel();
 
@@ -34,8 +34,8 @@ public class FrameMain extends JFrame {
     JPanel dataRightTop = new JPanel();                //3
     JPanel dataRightBottom = new JPanel();             //3
 
-    JButton[] buttonsMenuDataRight = new JButton[6];
-    JButton[] buttonsMenuDataLeft = new JButton[8];
+    JButton[] buttonsMenuDataRight = new JButton[8];
+    JButton[] buttonsMenuDataLeft = new JButton[18];
     static JPanel jVisiblePanelMenuDataLeft = new JPanel();
 
     static JPanel menuDownInfoJP0 = new JPanel();
@@ -251,6 +251,7 @@ public class FrameMain extends JFrame {
         constraints.weightx = 1.0;
         constraints.weighty = 0.97;
         dataLeft.setBackground(Color.WHITE);
+        createDataLeft();
         mainDataLeft.add(dataLeft, constraints);
     }
 
@@ -311,6 +312,10 @@ public class FrameMain extends JFrame {
         constraints.weightx = 0.2;
         jPanelEmpty.setBackground(Color.darkGray);
         menuDataLeft.add(jPanelEmpty, constraints);
+    }
+
+    public void createDataLeft() {
+
     }
 
 
@@ -390,8 +395,5 @@ public class FrameMain extends JFrame {
                 buttonsTopMenu[0].setIcon(leftMenuVisible);
 
         }
-
     }
-
-
 }
