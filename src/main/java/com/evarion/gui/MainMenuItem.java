@@ -13,7 +13,7 @@ public class MainMenuItem extends JFrame {
 
                 int yPositionMenu = TopButtonMenu.jButtonMainMenu.getY() + 20;
                 menu.show(e.getComponent(), menu.getX(), yPositionMenu);
-                }
+            }
         });
 
 
@@ -33,7 +33,7 @@ public class MainMenuItem extends JFrame {
         }));
 
 
-       menu.add(new JMenuItem(new AbstractAction("Next Item Menu Component") {
+        menu.add(new JMenuItem(new AbstractAction("Next Item Menu Component") {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -51,6 +51,3 @@ public class MainMenuItem extends JFrame {
         }
     }
 }
-
-
-
