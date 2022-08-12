@@ -68,8 +68,8 @@ public class TopButtonMenu extends JFrame {
     }
 
     public static void actionsButtonsTopPanel(int numButton) {
-        Icon leftMenuVisible = new ImageIcon("images/leftMenuVisible.png");
-        Icon rightMenuVisible = new ImageIcon("images/RightMenuVisible.png");
+        Icon leftMenuVisible = new ImageIcon("src/main/resources/images/leftMenuVisible.png");
+        Icon rightMenuVisible = new ImageIcon("src/main/resources/images/RightMenuVisible.png");
 
         switch (numButton) {
             case 24:

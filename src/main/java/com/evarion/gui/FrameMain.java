@@ -27,7 +27,7 @@ public class FrameMain extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocation(50, 40);
         setMinimumSize(new Dimension(920, 640));
-        setIconImage(ImageIO.read(FrameMain.class.getResourceAsStream("/logo1.png")));
+        setIconImage(ImageIO.read(FrameMain.class.getResourceAsStream("/logo/logo1.png")));
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         createMainPanel();
     }
