@@ -15,6 +15,7 @@ public class Main {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                assert frame2 != null;
                 frame2.setVisible(true);
 
             }

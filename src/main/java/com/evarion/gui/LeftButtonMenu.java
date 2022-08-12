@@ -3,8 +3,6 @@ package com.evarion.gui;
 import javax.swing.*;
 import java.awt.*;
 
-import static com.evarion.gui.FrameMain.menuLeftJP0;
-
 
 public class LeftButtonMenu extends JFrame {
 
@@ -12,8 +10,9 @@ public class LeftButtonMenu extends JFrame {
     static JLabel logo = new JLabel("LOGO");
     static JButton[] buttonsLeftMenu = new JButton[8];
 
+
     public static void createLeftButtonPanel() {
-        menuLeftJP0.setLayout(new GridBagLayout());
+        FrameMain.menuLeftJP0.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.anchor = GridBagConstraints.NORTH;
         constraints.weighty = 0.001;
@@ -31,7 +30,7 @@ public class LeftButtonMenu extends JFrame {
         constraints.gridy = 1;
 
         jPanelLogo.add(logo);
-        menuLeftJP0.add(jPanelLogo, constraints);
+        FrameMain.menuLeftJP0.add(jPanelLogo, constraints);
         constraints.insets.top = 2;
 
 
@@ -48,7 +47,7 @@ public class LeftButtonMenu extends JFrame {
             constraints.gridy = numY;
             constraints.gridx = 0;
             numY++;
-            menuLeftJP0.add(jButton, constraints);
+            FrameMain.menuLeftJP0.add(jButton, constraints);
         }
     }
 }

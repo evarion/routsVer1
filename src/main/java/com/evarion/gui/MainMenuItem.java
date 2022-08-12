@@ -3,11 +3,12 @@ package com.evarion.gui;
 import javax.swing.*;
 import java.awt.event.*;
 
+
 public class MainMenuItem extends JFrame {
-    static JPopupMenu menu = new JPopupMenu();
+  static   JPopupMenu menu = new JPopupMenu();
 
 
-    public  void createMainMenuButton() {//if
+    public static void createMainMenuButton() {//if
         TopButtonMenu.jButtonMainMenu.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
 

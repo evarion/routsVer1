@@ -1,20 +1,20 @@
 package com.evarion.gui;
 
-import javax.swing.*;
+import com.evarion.gui.actionButtonListeners.ActionSwitchMenuLeftJPO;
+import com.evarion.gui.actionButtonListeners.ActionSwitchRightMenu;
 
+import javax.swing.*;
 import java.awt.*;
 
-import static com.evarion.gui.FrameMain.menuTopJP0;
 
 public class TopButtonMenu extends JFrame {
 
     static JButton[] buttonsTopMenu = new JButton[25];
     static JButton jButtonMainMenu = new JButton("MENU");
-    static MainMenuItem mainMenuItem = new MainMenuItem();
 
 
     public static void createTopButtonPanel() {
-        menuTopJP0.setLayout(new GridBagLayout());
+        FrameMain.menuTopJP0.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         JPanel jPanelEmpty = new JPanel();
         JPanel jPanelEmpty2 = new JPanel();
@@ -22,7 +22,7 @@ public class TopButtonMenu extends JFrame {
         constraints.insets.top = 4;
         constraints.insets.bottom = 4;
         jPanelEmpty2.setBackground(Color.GRAY);
-        menuTopJP0.add(jPanelEmpty2, constraints);
+        FrameMain.menuTopJP0.add(jPanelEmpty2, constraints);
 
 
         for (int i = 0; i < buttonsTopMenu.length; i++) {
@@ -49,22 +49,22 @@ public class TopButtonMenu extends JFrame {
             }
             constraints.insets.top = 5;//visible LeftMenu
             gridX = gridX + 1;
-            menuTopJP0.add(jButton, constraints);
+            FrameMain.menuTopJP0.add(jButton, constraints);
             constraints.insets.top = 10;//visible LeftMenu
         }
 
         constraints.weightx = 0.7;
-        menuTopJP0.add(jPanelEmpty, constraints);
+        FrameMain.menuTopJP0.add(jPanelEmpty, constraints);
 
         jButtonMainMenu.setPreferredSize(new Dimension(80, 25));
         jButtonMainMenu.setMinimumSize(new Dimension(80, 25));
 
         constraints.anchor = GridBagConstraints.EAST;
-        mainMenuItem.createMainMenuButton();//test
+        MainMenuItem.createMainMenuButton();//test
 
         constraints.insets.top = 5;
         constraints.insets.bottom = 3;
-        menuTopJP0.add(jButtonMainMenu, constraints);
+        FrameMain.menuTopJP0.add(jButtonMainMenu, constraints);
     }
 
     public static void actionsButtonsTopPanel(int numButton) {
@@ -73,12 +73,12 @@ public class TopButtonMenu extends JFrame {
 
         switch (numButton) {
             case 24:
-                buttonsTopMenu[24].addActionListener(new ActionButtonListeners.ChangeEventActionFromAction());
+                buttonsTopMenu[24].addActionListener(new ActionSwitchRightMenu());
                 buttonsTopMenu[24].setIcon(rightMenuVisible);
                 buttonsTopMenu[24].setToolTipText("Показать/Скрыть окно");
                 break;
             case 0:
-                buttonsTopMenu[0].addActionListener(new ActionButtonListeners.TestButtonFromAction());
+                buttonsTopMenu[0].addActionListener(new ActionSwitchMenuLeftJPO());
                 buttonsTopMenu[0].setToolTipText("Показать/Скрыть Меню");
                 buttonsTopMenu[0].setIcon(leftMenuVisible);
         }

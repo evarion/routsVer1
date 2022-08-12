@@ -4,20 +4,17 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import static com.evarion.gui.DataPanel.createDataPanel;
-import static com.evarion.gui.InfoPanel.createInfoPanel;
-import static com.evarion.gui.LeftButtonMenu.createLeftButtonPanel;
-import static com.evarion.gui.TopButtonMenu.createTopButtonPanel;
 
 
 public class FrameMain extends JFrame {
 
-    static JPanel mainPanel = new JPanel();
-    static JPanel menuLeftJP0 = new JPanel();
+    JPanel mainPanel = new JPanel();
+    public static JPanel menuLeftJP0 = new JPanel();
     static JPanel menuTopJP0 = new JPanel();
     static JPanel dataCentreJP0 = new JPanel();
-    static JPanel jVisiblePanelMenuDataLeft = new JPanel();
+    public static JPanel jVisiblePanelMenuDataLeft = new JPanel();
     static JPanel menuDownInfoJP0 = new JPanel();
+
 
 
     public FrameMain() throws IOException {
@@ -36,7 +33,7 @@ public class FrameMain extends JFrame {
     }
 
 
-    public void createMainPanel() {
+    public void createMainPanel(){
         add(mainPanel);
         mainPanel.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -50,7 +47,7 @@ public class FrameMain extends JFrame {
         constraints.weighty = 0.001; //0.1 //visible LeftMenu
         constraints.weightx = GridBagConstraints.NONE;//ok
         menuTopJP0.setBackground(Color.GRAY);
-        createTopButtonPanel();
+        TopButtonMenu.createTopButtonPanel();
         mainPanel.add(menuTopJP0, constraints);
 
         constraints.gridx = 0;
@@ -61,7 +58,7 @@ public class FrameMain extends JFrame {
         constraints.weighty = 0.9;
         constraints.weightx = GridBagConstraints.NONE;//ok
         menuLeftJP0.setBackground(Color.ORANGE);
-        createLeftButtonPanel();
+        LeftButtonMenu.createLeftButtonPanel();
         mainPanel.add(menuLeftJP0, constraints);
 
         constraints.gridx = 1;
@@ -71,7 +68,7 @@ public class FrameMain extends JFrame {
         constraints.weightx = 0.03;
         constraints.weighty = 0.9;//visible LeftMenu constraints.weighty = 0.7;
         dataCentreJP0.setBackground(Color.GRAY.brighter());
-        createDataPanel();
+        DataPanel.createDataPanel();
         mainPanel.add(dataCentreJP0, constraints);
 
         constraints.gridx = 1;
@@ -81,7 +78,7 @@ public class FrameMain extends JFrame {
         constraints.weightx = 1.0;
         constraints.weighty = 0.03;
         constraints.weighty = GridBagConstraints.NONE;
-        createInfoPanel();
+        InfoPanel.createInfoPanel();
         menuDownInfoJP0.setBackground(Color.GRAY);
         mainPanel.add(menuDownInfoJP0, constraints);
     }

@@ -1,10 +1,7 @@
 package com.evarion.gui;
 
 import javax.swing.*;
-
 import java.awt.*;
-
-import static com.evarion.gui.FrameMain.*;
 
 
 public class DataPanel extends JFrame {
@@ -21,11 +18,10 @@ public class DataPanel extends JFrame {
     static JButton[] buttonsMenuDataRight = new JButton[8];
     static JButton[] buttonsMenuDataLeft = new JButton[18];
 
-    static JSplitPane dataSplitPaneHorizontal = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, mainDataLeft, mainDataRight);//3
-
+    public static JSplitPane dataSplitPaneHorizontal = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, mainDataLeft, mainDataRight);//3
 
     public static void createDataPanel() {
-        dataCentreJP0.setLayout(new GridBagLayout());
+        FrameMain.dataCentreJP0.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
         //constraints.weighty = GridBagConstraints.NONE;
@@ -41,7 +37,7 @@ public class DataPanel extends JFrame {
         createMainDataRight(); //
 
         dataSplitPaneHorizontal.setResizeWeight(0.8);
-        dataCentreJP0.add(dataSplitPaneHorizontal, constraints);
+        FrameMain.dataCentreJP0.add(dataSplitPaneHorizontal, constraints);
     }
 
 
@@ -100,10 +96,10 @@ public class DataPanel extends JFrame {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.anchor = GridBagConstraints.WEST;
         constraints.insets.left = 110;
-        jVisiblePanelMenuDataLeft.setBackground(Color.darkGray);
-        jVisiblePanelMenuDataLeft.setVisible(false);
+        FrameMain.jVisiblePanelMenuDataLeft.setBackground(Color.darkGray);
+        FrameMain.jVisiblePanelMenuDataLeft.setVisible(false);
 
-        menuDataLeft.add(jVisiblePanelMenuDataLeft, constraints);
+        menuDataLeft.add(FrameMain.jVisiblePanelMenuDataLeft, constraints);
 
         constraints.weightx = GridBagConstraints.NONE;
         constraints.insets.top = 8;
