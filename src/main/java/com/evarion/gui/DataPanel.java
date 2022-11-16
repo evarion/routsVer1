@@ -55,10 +55,12 @@ public class DataPanel extends JFrame {
         createButtonMenuLeft();
         mainDataLeft.add(menuDataLeft, constraints);
 
+
         constraints.gridx = 0;
         constraints.gridy = 1;
         constraints.weightx = 1.0;
         constraints.weighty = 0.97;
+
         dataLeft.setBackground(Color.WHITE);
         createDataLeft();
         mainDataLeft.add(dataLeft, constraints);
@@ -89,7 +91,7 @@ public class DataPanel extends JFrame {
     }
 
 
-    public static void createButtonMenuLeft() {
+    public static void createButtonMenuLeft() { // пример для createDataLeft
         JPanel jPanelEmpty = new JPanel();
 
         menuDataLeft.setLayout(new GridBagLayout());
@@ -122,8 +124,16 @@ public class DataPanel extends JFrame {
         menuDataLeft.add(jPanelEmpty, constraints);
     }
 
-    public static void createDataLeft() {
+    //============================================================================================================
 
+    public static void createDataLeft() {//добавление таблицы данных
+
+        dataLeft.setLayout(new BorderLayout()); //1111111111111
+        FrameMain.jVisiblePanelDataLeft.setBackground(Color.MAGENTA); // необходимо вместо панели добавить данные таблицы
+        FrameMain.jVisiblePanelDataLeft.setVisible(true);
+
+        DataTable.constructDataTable();
+        dataLeft.add(FrameMain.jVisiblePanelDataLeft, BorderLayout.WEST);
     }
 
 
@@ -132,6 +142,7 @@ public class DataPanel extends JFrame {
         menuDataRight.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.anchor = GridBagConstraints.WEST;
+
         constraints.insets.top = 8;
         constraints.insets.left = 8;//ok
         constraints.insets.bottom = 8;//ok

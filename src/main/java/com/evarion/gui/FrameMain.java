@@ -13,9 +13,8 @@ public class FrameMain extends JFrame {
     static JPanel menuTopJP0 = new JPanel();
     static JPanel dataCentreJP0 = new JPanel();
     public static JPanel jVisiblePanelMenuDataLeft = new JPanel();
+    public static JPanel jVisiblePanelDataLeft = new JPanel();
     static JPanel menuDownInfoJP0 = new JPanel();
-
-
 
     public FrameMain() throws IOException {
         super("Routs Logistic");
