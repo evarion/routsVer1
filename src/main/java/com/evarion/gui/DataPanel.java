@@ -128,12 +128,9 @@ public class DataPanel extends JFrame {
 
     public static void createDataLeft() {//добавление таблицы данных
 
-        dataLeft.setLayout(new BorderLayout()); //1111111111111
-        FrameMain.jVisiblePanelDataLeft.setBackground(Color.MAGENTA); // необходимо вместо панели добавить данные таблицы
-        FrameMain.jVisiblePanelDataLeft.setVisible(true);
-
-        DataTable.constructDataTable();
-        dataLeft.add(FrameMain.jVisiblePanelDataLeft, BorderLayout.WEST);
+        dataLeft.setLayout(new BorderLayout());
+        Box contents = DataTable.constructDataTable();
+        dataLeft.add(contents, BorderLayout.CENTER);
     }
 
 
