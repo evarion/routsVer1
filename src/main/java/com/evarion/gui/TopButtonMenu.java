@@ -1,5 +1,7 @@
 package com.evarion.gui;
 
+import com.evarion.gui.actionButtonListeners.ActionStartConnectionSQL;
+import com.evarion.gui.actionButtonListeners.ActionStopConnectionSQL;
 import com.evarion.gui.actionButtonListeners.ActionSwitchMenuLeftJPO;
 import com.evarion.gui.actionButtonListeners.ActionSwitchRightMenu;
 
@@ -70,6 +72,8 @@ public class TopButtonMenu extends JFrame {
     public static void actionsButtonsTopPanel(int numButton) {
         Icon leftMenuVisible = new ImageIcon("src/main/resources/images/leftMenuVisible.png");
         Icon rightMenuVisible = new ImageIcon("src/main/resources/images/RightMenuVisible.png");
+        Icon startConnectionSQL = new ImageIcon("src/main/resources/images/startConnectionSQL.png");
+        Icon stopConnectionSQL = new ImageIcon("src/main/resources/images/stopConnectionSQL.png");
 
         switch (numButton) {
             case 24:
@@ -81,6 +85,16 @@ public class TopButtonMenu extends JFrame {
                 buttonsTopMenu[0].addActionListener(new ActionSwitchMenuLeftJPO());
                 buttonsTopMenu[0].setToolTipText("Показать/Скрыть Меню");
                 buttonsTopMenu[0].setIcon(leftMenuVisible);
+                break;
+            case 22:
+                buttonsTopMenu[22].addActionListener(new ActionStartConnectionSQL());
+                buttonsTopMenu[22].setToolTipText("Установить соединение с БД");
+                buttonsTopMenu[22].setIcon(startConnectionSQL);
+                break;
+            case 23:
+                buttonsTopMenu[23].addActionListener(new ActionStopConnectionSQL());
+                buttonsTopMenu[23].setToolTipText("разорвать соединение с БД");
+                buttonsTopMenu[23].setIcon(stopConnectionSQL);
         }
     }
 }
