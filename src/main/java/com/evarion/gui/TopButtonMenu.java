@@ -1,9 +1,6 @@
 package com.evarion.gui;
 
-import com.evarion.gui.actionButtonListeners.ActionStartConnectionSQL;
-import com.evarion.gui.actionButtonListeners.ActionStopConnectionSQL;
-import com.evarion.gui.actionButtonListeners.ActionSwitchMenuLeftJPO;
-import com.evarion.gui.actionButtonListeners.ActionSwitchRightMenu;
+import com.evarion.gui.actionButtonListeners.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +8,7 @@ import java.awt.*;
 
 public class TopButtonMenu extends JFrame {
 
-    static JButton[] buttonsTopMenu = new JButton[25];
+    public static JButton[] buttonsTopMenu = new JButton[25];
     static JButton jButtonMainMenu = new JButton("MENU");
 
 
@@ -72,10 +69,21 @@ public class TopButtonMenu extends JFrame {
     public static void actionsButtonsTopPanel(int numButton) {
         Icon leftMenuVisible = new ImageIcon("src/main/resources/images/leftMenuVisible.png");
         Icon rightMenuVisible = new ImageIcon("src/main/resources/images/RightMenuVisible.png");
-        Icon startConnectionSQL = new ImageIcon("src/main/resources/images/startConnectionSQL.png");
+        //Icon startConnectionSQL = new ImageIcon("src/main/resources/images/startConnectionSQL.png");
         Icon stopConnectionSQL = new ImageIcon("src/main/resources/images/stopConnectionSQL.png");
 
         switch (numButton) {
+            case 1:
+                buttonsTopMenu[1].addActionListener(new ActionCreateTableSQL());
+
+                buttonsTopMenu[1].setToolTipText("создать таблицы");
+                break;
+            case 2:
+                buttonsTopMenu[2].addActionListener(new ActionCheckTablesSQL());
+
+                buttonsTopMenu[2].setToolTipText("проверка таблиц");
+                break;
+
             case 24:
                 buttonsTopMenu[24].addActionListener(new ActionSwitchRightMenu());
                 buttonsTopMenu[24].setIcon(rightMenuVisible);
@@ -86,6 +94,13 @@ public class TopButtonMenu extends JFrame {
                 buttonsTopMenu[0].setToolTipText("Показать/Скрыть Меню");
                 buttonsTopMenu[0].setIcon(leftMenuVisible);
                 break;
+
+            case 23:
+                buttonsTopMenu[23].addActionListener(new ActionStartStopConnectionSQL());
+               // TopButtonMenu.buttonsTopMenu[23].setToolTipText("нет соединения с БД");
+               // buttonsTopMenu[23].setIcon(stopConnectionSQL);
+               // break;
+/*
             case 22:
                 buttonsTopMenu[22].addActionListener(new ActionStartConnectionSQL());
                 buttonsTopMenu[22].setToolTipText("Установить соединение с БД");
@@ -95,6 +110,8 @@ public class TopButtonMenu extends JFrame {
                 buttonsTopMenu[23].addActionListener(new ActionStopConnectionSQL());
                 buttonsTopMenu[23].setToolTipText("разорвать соединение с БД");
                 buttonsTopMenu[23].setIcon(stopConnectionSQL);
+
+ */
         }
     }
 }
