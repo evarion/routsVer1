@@ -70,7 +70,7 @@ public class TopButtonMenu extends JFrame {
         Icon leftMenuVisible = new ImageIcon("src/main/resources/images/leftMenuVisible.png");
         Icon rightMenuVisible = new ImageIcon("src/main/resources/images/RightMenuVisible.png");
         //Icon startConnectionSQL = new ImageIcon("src/main/resources/images/startConnectionSQL.png");
-        Icon stopConnectionSQL = new ImageIcon("src/main/resources/images/stopConnectionSQL.png");
+        //Icon stopConnectionSQL = new ImageIcon("src/main/resources/images/stopConnectionSQL.png");
 
         switch (numButton) {
             case 1:
@@ -110,7 +110,6 @@ public class TopButtonMenu extends JFrame {
                 buttonsTopMenu[23].addActionListener(new ActionStopConnectionSQL());
                 buttonsTopMenu[23].setToolTipText("разорвать соединение с БД");
                 buttonsTopMenu[23].setIcon(stopConnectionSQL);
-
  */
         }
     }

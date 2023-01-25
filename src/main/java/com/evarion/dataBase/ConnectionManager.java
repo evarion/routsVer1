@@ -10,7 +10,6 @@ import java.sql.SQLException;
 
 
 public class ConnectionManager {
-
     private static final String URL = "jdbc:postgresql://localhost:5432/routs";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "24test1986";
@@ -33,7 +32,6 @@ public class ConnectionManager {
                     isStartSQL = true;
                     TopButtonMenu.buttonsTopMenu[23].setIcon(startConnectionSQL);
                     TopButtonMenu.buttonsTopMenu[23].setToolTipText("соединение с БД установлено");
-
                 }
             } catch (SQLException e) {
                 System.err.println("не удалось загрузить дравйвер");
