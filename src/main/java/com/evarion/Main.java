@@ -1,4 +1,4 @@
-package com.evarion.main;
+package com.evarion;
 
 import com.evarion.dataBase.CheckConnectionSQL;
 import com.evarion.dataBase.ConnectionManager;

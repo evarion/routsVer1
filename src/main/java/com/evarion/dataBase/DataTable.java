@@ -42,12 +42,37 @@ public class DataTable {
         }
         System.out.println("Table created successfully");
     }
-    private static void createDefaultTablePort() {
 
+    private static void createDefaultTablePort(Statement stmt) {
+        try {
+            String sql = "CREATE TABLE IF NOT EXISTS PORT " +
+                    "(ID INT PRIMARY KEY NOT NULL," +
+                    "NAME TEXT NOT NULL, " +
+                    "FLAG TEXT NOT NULL"+
+                    "COUNTRY TEXT NOT NULL ";
+            stmt.executeUpdate(sql);
+            stmt.close();
+        } catch (
+                SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
     }
 
-    private static void createDefaultTableCargo() {
-
+    private static void createDefaultTableCargo(Statement stmt) {
+        try {
+            String sql = "CREATE TABLE IF NOT EXISTS CARGO " +
+                    "(ID INT PRIMARY KEY NOT NULL," +
+                    "NAME TEXT NOT NULL, " +
+                    "NETTO DESIMAL" +
+                    "BRUTTO DESIMAL";
+            stmt.executeUpdate(sql);
+            stmt.close();
+        } catch (
+                SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            System.exit(0);
+        }
     }
 
     private static void createNewTable() {

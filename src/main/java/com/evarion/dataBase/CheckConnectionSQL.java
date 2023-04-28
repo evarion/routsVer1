@@ -11,26 +11,26 @@ public class CheckConnectionSQL {
 
     public static void checkConnect() {
         boolean open = true;
-        boolean checkConnect = false;
+        boolean connected = false;
         while (open) {
             try {
                 ConnectionManager.connection.isValid(5);
-                if (!checkConnect) {
+                if (!connected) {
                     if (ConnectionManager.connection.isClosed()) {
                         TopButtonMenu.buttonsTopMenu[23].setIcon(stopConnectionSQL);
                         TopButtonMenu.buttonsTopMenu[23].setToolTipText("нет соединения с БД");
                         System.out.println("Потеряно соединение с БД");
                         ConnectionManager.isStartSQL = false;
-                        checkConnect = true;
+                        connected = true;
                     }
                 }
                 if (!ActionStartStopConnectionSQL.stopManualConnection) {
-                    if (checkConnect) {
+                    if (connected) {
                         {
                             ConnectionManager.startConnectionSQL();
                             System.out.println("соединение с БД повторно установлено");
                             ConnectionManager.isStartSQL = true;
-                            checkConnect = false;
+                            connected = false;
                         }
                     }
                 }

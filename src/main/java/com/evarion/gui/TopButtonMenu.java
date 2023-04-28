@@ -67,6 +67,12 @@ public class TopButtonMenu extends JFrame {
     }
 
     public static void actionsButtonsTopPanel(int numButton) {
+        int buttonCreateTableSql = 1;
+        int buttonCheckTablesSQL = 2;
+        int buttonSwitchRightMenu = 24;
+        int buttonSwitchMenuLeftJPO = 0;
+        int buttonStartStopConnectionSQL = 23;
+
         Icon leftMenuVisible = new ImageIcon("src/main/resources/images/leftMenuVisible.png");
         Icon rightMenuVisible = new ImageIcon("src/main/resources/images/RightMenuVisible.png");
         //Icon startConnectionSQL = new ImageIcon("src/main/resources/images/startConnectionSQL.png");
@@ -74,32 +80,31 @@ public class TopButtonMenu extends JFrame {
 
         switch (numButton) {
             case 1:
-                buttonsTopMenu[1].addActionListener(new ActionCreateTableSQL());
-
-                buttonsTopMenu[1].setToolTipText("создать таблицы");
+                buttonsTopMenu[buttonCreateTableSql].addActionListener(new ActionCreateTableSQL());
+                buttonsTopMenu[buttonCreateTableSql].setToolTipText("создать таблицы");
                 break;
             case 2:
-                buttonsTopMenu[2].addActionListener(new ActionCheckTablesSQL());
-
-                buttonsTopMenu[2].setToolTipText("проверка таблиц");
+                buttonsTopMenu[buttonCheckTablesSQL].addActionListener(new ActionCheckTablesSQL());
+                buttonsTopMenu[buttonCheckTablesSQL].setToolTipText("проверка таблиц");
                 break;
 
             case 24:
-                buttonsTopMenu[24].addActionListener(new ActionSwitchRightMenu());
-                buttonsTopMenu[24].setIcon(rightMenuVisible);
-                buttonsTopMenu[24].setToolTipText("Показать/Скрыть окно");
+                buttonsTopMenu[buttonSwitchRightMenu].addActionListener(new ActionSwitchRightMenu());
+                buttonsTopMenu[buttonSwitchRightMenu].setIcon(rightMenuVisible);
+                buttonsTopMenu[buttonSwitchRightMenu].setToolTipText("Показать/Скрыть окно");
                 break;
             case 0:
-                buttonsTopMenu[0].addActionListener(new ActionSwitchMenuLeftJPO());
-                buttonsTopMenu[0].setToolTipText("Показать/Скрыть Меню");
-                buttonsTopMenu[0].setIcon(leftMenuVisible);
+                buttonsTopMenu[buttonSwitchMenuLeftJPO].addActionListener(new ActionSwitchMenuLeftJPO());
+                buttonsTopMenu[buttonSwitchMenuLeftJPO].setToolTipText("Показать/Скрыть Меню");
+                buttonsTopMenu[buttonSwitchMenuLeftJPO].setIcon(leftMenuVisible);
                 break;
 
-            case 23:
-                buttonsTopMenu[23].addActionListener(new ActionStartStopConnectionSQL());
-               // TopButtonMenu.buttonsTopMenu[23].setToolTipText("нет соединения с БД");
-               // buttonsTopMenu[23].setIcon(stopConnectionSQL);
-               // break;
+            //final int CONNECTION_CONTROL_BUTTON_INDEX = 23;
+            case 23://CONNECTION_CONTROL_BUTTON_INDEX:
+                buttonsTopMenu[buttonStartStopConnectionSQL].addActionListener(new ActionStartStopConnectionSQL());
+                // TopButtonMenu.buttonsTopMenu[23].setToolTipText("нет соединения с БД");
+                // buttonsTopMenu[23].setIcon(stopConnectionSQL);
+                // break;
 /*
             case 22:
                 buttonsTopMenu[22].addActionListener(new ActionStartConnectionSQL());
