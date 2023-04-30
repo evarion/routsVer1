@@ -2,7 +2,6 @@ package com.evarion.dataBase;
 
 import com.evarion.gui.TopButtonMenu;
 import com.evarion.gui.actionButtonListeners.ActionStartStopConnectionSQL;
-
 import javax.swing.*;
 import java.sql.SQLException;
 
