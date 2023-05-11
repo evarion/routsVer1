@@ -2,13 +2,10 @@ spring:
   liquibase:
     enabled: true
   datasource:
-    url: jdbc:h2:file:./db # в корне проект файл бд db.mv.db
-    username: u # имя пользователя консоли
-    password: 1 # пароль консоли
+    url: jdbc:postgresql://localhost:5432/testBase1
+    username: root # имя пользователя консоли
+    password: 24test1986 # пароль консоли
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     hibernate:
       ddl-auto: validate
-  h2:
-    console:
-      enabled: true
