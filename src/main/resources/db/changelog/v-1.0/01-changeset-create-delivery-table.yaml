@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-delivery
+        author: AleksB
+        changes:
+          - createTable:
+              tableName: delivery
+              columns:
+                - column:
+                    name: id
+                    type: bigint
+                    autoincrement: true
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: container
+                    type: varchar(100)
+                    constraints:
+                    nullable: true
+
+                - column:
+                    name: line_id
+                    type: bigint
+                    constraints:
+                      foreignKeyName: sealine_delivery_fk
+                      referencedTableName: sealine
+                      referencedColumnNames: id
+

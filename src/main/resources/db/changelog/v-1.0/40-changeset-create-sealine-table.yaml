@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-sealine
+        author: AleksB
+        changes:
+          - createTable:
+              tableName: sealine
+              columns:
+                - column:
+                    name: id
+                    type: bigint
+                    autoincrement: true
+                    constraints:
+                      primaryKey: true
+                      nullable: false
+                - column:
+                    name: line
+                    type: varchar(255)
+                    constraints:
+                    nullable: true
