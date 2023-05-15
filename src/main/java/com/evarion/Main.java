@@ -3,12 +3,18 @@ package com.evarion;
 import com.evarion.dataBase.CheckConnectionSQL;
 import com.evarion.dataBase.ConnectionManager;
 import com.evarion.gui.FrameMain;
+import com.evarion.liquibase.DbMigrator;
 
 import java.io.IOException;
-
+import java.sql.DatabaseMetaData;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Main {
+
+
     public static void main(String[] args) {
+
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 FrameMain frame2 = null;
@@ -19,11 +25,11 @@ public class Main {
                 }
                 assert frame2 != null;
                 frame2.setVisible(true);
-
             }
         });
-
+        runDBMigrator();
         ConnectionManager.startConnectionSQL();
+
 
         final Runnable connectionInfo = new Runnable() {
             public void run() {
@@ -32,5 +38,19 @@ public class Main {
         };
         Thread thread = new Thread(connectionInfo);
         thread.start();
+
     }
+
+    static void runDBMigrator() {
+        String rootChangeLog = "db/changelog/db.changelog-master.xml";
+        String jdbcUrl = "jdbc:postgresql://localhost:5432/testBase1";
+        String login = "root";
+        String password = "24test1986";
+
+
+        DbMigrator dbMigrator = new DbMigrator(rootChangeLog, jdbcUrl, login, password);
+        dbMigrator.runDbMigrations();
+        dbMigrator.checkTable();
+    }
+
 }

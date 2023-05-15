@@ -31,8 +31,6 @@
             <version>42.5.1</version>
         </dependency>
 
-        
-
         <!-- https://mvnrepository.com/artifact/org.liquibase/liquibase-core -->
         <dependency>
             <groupId>org.liquibase</groupId>
@@ -46,5 +44,12 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.6.10.Final</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.30</version>
+        </dependency>
+
     </dependencies>
 </project>
