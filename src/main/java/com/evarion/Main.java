@@ -1,6 +1,7 @@
 package com.evarion;
 
 import com.evarion.dataBase.CheckConnectionSQL;
+import com.evarion.dataBase.ConfigConnectionSQL;
 import com.evarion.dataBase.ConnectionManager;
 import com.evarion.gui.FrameMain;
 import com.evarion.liquibase.DbMigrator;
@@ -42,15 +43,17 @@ public class Main {
     }
 
     static void runDBMigrator() {
-        String rootChangeLog = "db/changelog/db.changelog-master.xml";
-        String jdbcUrl = "jdbc:postgresql://localhost:5432/testBase1";
-        String login = "root";
-        String password = "24test1986";
+        // String rootChangeLog = "db/changelog/db.changelog-master.xml";
+        // String jdbcUrl = "jdbc:postgresql://localhost:5432/testBase1";
+        // String login = "root";
+        // String password = "24test1986";
+        ConfigConnectionSQL configConnectionSQL = new ConfigConnectionSQL();
 
-
-        DbMigrator dbMigrator = new DbMigrator(rootChangeLog, jdbcUrl, login, password);
+        DbMigrator dbMigrator = new DbMigrator(configConnectionSQL.getRootChangeLog(), configConnectionSQL.getJdbcUrl(),
+                configConnectionSQL.getLogin(), configConnectionSQL.getPassword());
         dbMigrator.runDbMigrations();
         dbMigrator.checkTable();
     }
+
 
 }
