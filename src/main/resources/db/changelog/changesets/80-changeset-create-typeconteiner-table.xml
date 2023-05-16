@@ -4,14 +4,12 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
-    <changeSet id="create-table-sealine" author="Aleks">
-        <createTable tableName="sealine">
+    <changeSet id="create-table-typeconteiner" author="Aleks">
+        <createTable tableName="typeconteiner">
             <column name="id" type="int" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="NameLine" type="varchar(200)"/>
-
+            <column name="typeconteiner" type="varchar(255)"/>
         </createTable>
     </changeSet>
-
 </databaseChangeLog>

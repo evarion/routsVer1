@@ -12,7 +12,7 @@
             <column name="container" type="varchar(64)"/>
 
             <column name="line_id" type="int">
-                <constraints foreignKeyName="sealine_delivery_fk" references="sealine(id)"/>
+                <constraints foreignKeyName="seaLine_delivery_fk" references="sealine(id)"/>
             </column>
         </createTable>
     </changeSet>

@@ -10,11 +10,9 @@ import java.sql.SQLException;
 
 
 public class ConnectionManager {
-
-
-    private static final String URL = "jdbc:postgresql://localhost:5432/routs";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "24test1986";
+    //private static final String URL = "jdbc:postgresql://localhost:5432/routs";
+    //private static final String USERNAME = "root";
+    //private static final String PASSWORD = "24test1986";
     public static Connection connection;
     public static boolean isStartSQL = false;
 
@@ -23,12 +21,14 @@ public class ConnectionManager {
 
 
     public static void startConnectionSQL() {
+        ConfigConnectionSQL configConnectionSQL = new ConfigConnectionSQL();
         if (!isStartSQL) {
             try {
                 Driver driver = new org.postgresql.Driver();
                 DriverManager.registerDriver(driver);
-
-                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                //connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                connection = DriverManager.getConnection(configConnectionSQL.jdbcUrl, configConnectionSQL.login,
+                        configConnectionSQL.password);
                 if (!connection.isClosed()) {
                     System.out.println("соединение с БД установлено");
                     isStartSQL = true;

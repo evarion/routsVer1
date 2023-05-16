@@ -1,16 +1,13 @@
 package com.evarion.liquibase;
+
 import java.sql.*;
-
-
 import liquibase.Liquibase;
 import liquibase.database.jvm.JdbcConnection;
 import liquibase.exception.LiquibaseException;
 import liquibase.resource.ClassLoaderResourceAccessor;
 
 
-
 public class DbMigrator {
-
     private final String liquibaseRootChangelog;
     private final String jdbcUrl;
     private final String username;
@@ -25,7 +22,6 @@ public class DbMigrator {
 
     public void runDbMigrations() {
         Connection connection = null;
-
         try {
             connection = DriverManager.getConnection(jdbcUrl, username, password);
 
