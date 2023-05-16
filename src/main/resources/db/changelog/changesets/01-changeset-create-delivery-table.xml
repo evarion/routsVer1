@@ -14,6 +14,38 @@
             <column name="line_id" type="int">
                 <constraints foreignKeyName="seaLine_delivery_fk" references="sealine(id)"/>
             </column>
+
+            <column name="vessel_id" type="int">
+                <constraints foreignKeyName="vessel_delivery_fk" references="vessel(id)"/>
+            </column>
+
+            <column name="port_id" type="int">
+                <constraints foreignKeyName="port_delivery_fk" references="port(id)"/>
+            </column>
+
+            <column name="cargo_id" type="int">
+                <constraints foreignKeyName="cargo_delivery_fk" references="cargo(id)"/>
+            </column>
+
+            <column name="exportimport_id" type="int">
+                <constraints foreignKeyName="exportimport_delivery_fk" references="exportimport(id)"/>
+            </column>
+
+            <column name="country_id" type="int">
+                <constraints foreignKeyName="country_delivery_fk" references="country(id)"/>
+            </column>
+
+            <column name="status_id" type="int">
+                <constraints foreignKeyName="status_delivery_fk" references="status(id)"/>
+            </column>
+
+            <column name="typeconteiner_id" type="int">
+                <constraints foreignKeyName="typeconteiner_delivery_fk" references="typeconteiner(id)"/>
+            </column>
+
+            <column name="sizeconteiner_id" type="int">
+                <constraints foreignKeyName="sizeconteiner_delivery_fk" references="sizeconteiner(id)"/>
+            </column>
         </createTable>
     </changeSet>
 

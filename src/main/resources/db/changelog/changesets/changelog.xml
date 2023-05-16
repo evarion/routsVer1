@@ -4,7 +4,15 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
-
+    <include file="10-changeset-create-vessel-table.xml" relativeToChangelogFile="true"/>
+    <include file="20-changeset-create-port-table.xml" relativeToChangelogFile="true"/>
+    <include file="30-changeset-create-cargo-table.xml" relativeToChangelogFile="true"/>
     <include file="40-changeset-create-sealine-table.xml" relativeToChangelogFile="true"/>
+    <include file="50-changeset-create-exportimport-table.xml" relativeToChangelogFile="true"/>
+    <include file="60-changeset-create-country-table.xml" relativeToChangelogFile="true"/>
+    <include file="70-changeset-create-status-table.xml" relativeToChangelogFile="true"/>
+    <include file="80-changeset-create-typeconteiner-table.xml" relativeToChangelogFile="true"/>
+    <include file="90-changeset-create-sizeconteiner-table.xml" relativeToChangelogFile="true"/>
+
     <include file="01-changeset-create-delivery-table.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
