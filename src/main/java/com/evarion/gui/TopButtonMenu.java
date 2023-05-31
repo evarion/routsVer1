@@ -81,11 +81,11 @@ public class TopButtonMenu extends JFrame {
         switch (numButton) {
             case 1:
                 buttonsTopMenu[buttonCreateTableSql].addActionListener(new ActionCreateTableSQL());
-                buttonsTopMenu[buttonCreateTableSql].setToolTipText("создать таблицы");
+                buttonsTopMenu[buttonCreateTableSql].setToolTipText("EMPTY");
                 break;
             case 2:
                 buttonsTopMenu[buttonCheckTablesSQL].addActionListener(new ActionCheckTablesSQL());
-                buttonsTopMenu[buttonCheckTablesSQL].setToolTipText("проверка таблиц");
+                buttonsTopMenu[buttonCheckTablesSQL].setToolTipText("ПРОВЕРКА ТАБЛИЦ");
                 break;
 
             case 24:

@@ -1,9 +1,11 @@
-package com.evarion.dataBase;
+package com.evarion.libraryArchive;
+
+import com.evarion.dataBase.ConnectionManager;
 
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DataTable {
+public class DataTable1 {
     public static void createDefaultTables() {
         Statement stmt = null;
         try {

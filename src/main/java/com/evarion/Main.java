@@ -4,6 +4,7 @@ import com.evarion.dataBase.CheckConnectionSQL;
 import com.evarion.dataBase.ConfigConnectionSQL;
 import com.evarion.dataBase.ConnectionManager;
 import com.evarion.gui.FrameMain;
+import com.evarion.liquibase.CheckTable;
 import com.evarion.liquibase.DbMigrator;
 import java.io.IOException;
 
@@ -40,6 +41,7 @@ public class Main {
         DbMigrator dbMigrator = new DbMigrator(configConnectionSQL.getRootChangeLog(), configConnectionSQL.getJdbcUrl(),
                 configConnectionSQL.getLogin(), configConnectionSQL.getPassword());
         dbMigrator.runDbMigrations();
-        dbMigrator.checkTable();
     }
+
+
 }
