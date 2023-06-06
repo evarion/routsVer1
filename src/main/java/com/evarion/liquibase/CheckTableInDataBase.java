@@ -2,12 +2,12 @@ package com.evarion.liquibase;
 
 import java.sql.*;
 
-public class CheckTable {
+public class CheckTableInDataBase {
     private final String jdbcUrl;
     private final String username;
     private final String password;
 
-    public CheckTable( String jdbcUrl, String username, String password) {// перенести
+    public CheckTableInDataBase(String jdbcUrl, String username, String password) {// перенести
         this.jdbcUrl = jdbcUrl;
         this.username = username;
         this.password = password;

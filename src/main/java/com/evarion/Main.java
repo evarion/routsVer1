@@ -1,11 +1,10 @@
 package com.evarion;
 
-import com.evarion.dataBase.CheckConnectionSQL;
 import com.evarion.dataBase.ConfigConnectionSQL;
-import com.evarion.dataBase.ConnectionManager;
+import com.evarion.libraryArchive.CheckConnection.ConnectionManager;
 import com.evarion.gui.FrameMain;
-import com.evarion.liquibase.CheckTable;
 import com.evarion.liquibase.DbMigrator;
+
 import java.io.IOException;
 
 
@@ -24,17 +23,19 @@ public class Main {
                 frame2.setVisible(true);
             }
         });
-        runDBMigrator();
-        ConnectionManager.startConnectionSQL();
 
-        final Runnable connectionInfo = new Runnable() {
+        runDBMigrator();
+        //ConnectionManager.startConnectionSQL();
+        /*final Runnable connectionInfo = new Runnable() {
             public void run() {
                 CheckConnectionSQL.checkConnect();//тест
             }
         };
         Thread thread = new Thread(connectionInfo);
         thread.start();
+       */
     }
+
 
     static void runDBMigrator() {
         ConfigConnectionSQL configConnectionSQL = new ConfigConnectionSQL();

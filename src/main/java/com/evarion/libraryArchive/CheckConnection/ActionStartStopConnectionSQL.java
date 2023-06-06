@@ -1,6 +1,6 @@
-package com.evarion.gui.actionButtonListeners;
+package com.evarion.libraryArchive.CheckConnection;
 
-import com.evarion.dataBase.ConnectionManager;
+import com.evarion.libraryArchive.CheckConnection.ConnectionManager;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,11 +11,11 @@ public class ActionStartStopConnectionSQL implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (!ConnectionManager.isStartSQL) {
-            ConnectionManager.startConnectionSQL();
+            //ConnectionManager.startConnectionSQL();
             ConnectionManager.isStartSQL = true;
             stopManualConnection=false;
         } else {
-            ConnectionManager.stopConnectionSQL();
+            //ConnectionManager.stopConnectionSQL();
             ConnectionManager.isStartSQL = false;
             stopManualConnection=true;
 

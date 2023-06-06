@@ -1,6 +1,6 @@
 package com.evarion.libraryArchive;
 
-import com.evarion.dataBase.ConnectionManager;
+import com.evarion.libraryArchive.CheckConnection.ConnectionManager;
 
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
@@ -13,7 +13,7 @@ public class DataBase {
         Statement stmt = null;
 
         try {
-            stmt = com.evarion.dataBase.ConnectionManager.connection.createStatement();
+            stmt = ConnectionManager.connection.createStatement();
             String sql = "CREATE TABLE IF NOT EXISTS COMPANY " +
                     "(ID INT PRIMARY KEY NOT NULL," +
                     " NAME TEXT NOT NULL, " +

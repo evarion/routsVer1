@@ -1,6 +1,7 @@
 package com.evarion.gui;
 
 import com.evarion.gui.actionButtonListeners.*;
+//import com.evarion.libraryArchive.CheckConnection.ActionStartStopConnectionSQL;
 
 import javax.swing.*;
 import java.awt.*;
@@ -71,7 +72,7 @@ public class TopButtonMenu extends JFrame {
         int buttonCheckTablesSQL = 2;
         int buttonSwitchRightMenu = 24;
         int buttonSwitchMenuLeftJPO = 0;
-        int buttonStartStopConnectionSQL = 23;
+        //int buttonStartStopConnectionSQL = 23;
 
         Icon leftMenuVisible = new ImageIcon("src/main/resources/images/leftMenuVisible.png");
         Icon rightMenuVisible = new ImageIcon("src/main/resources/images/RightMenuVisible.png");
@@ -100,8 +101,8 @@ public class TopButtonMenu extends JFrame {
                 break;
 
             //final int CONNECTION_CONTROL_BUTTON_INDEX = 23;
-            case 23://CONNECTION_CONTROL_BUTTON_INDEX:
-                buttonsTopMenu[buttonStartStopConnectionSQL].addActionListener(new ActionStartStopConnectionSQL());
+            //case 23://CONNECTION_CONTROL_BUTTON_INDEX:
+                //buttonsTopMenu[buttonStartStopConnectionSQL].addActionListener(new ActionStartStopConnectionSQL());
                 // TopButtonMenu.buttonsTopMenu[23].setToolTipText("нет соединения с БД");
                 // buttonsTopMenu[23].setIcon(stopConnectionSQL);
                 // break;

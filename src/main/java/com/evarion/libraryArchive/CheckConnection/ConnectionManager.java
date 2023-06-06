@@ -1,5 +1,6 @@
-package com.evarion.dataBase;
+package com.evarion.libraryArchive.CheckConnection;
 
+import com.evarion.dataBase.ConfigConnectionSQL;
 import com.evarion.gui.TopButtonMenu;
 
 import javax.swing.*;
@@ -20,7 +21,7 @@ public class ConnectionManager {
     static Icon stopConnectionSQL = new ImageIcon("src/main/resources/images/stopConnectionSQL.png");
 
 
-    public static void startConnectionSQL() {
+   /* public static void startConnectionSQL() {
         ConfigConnectionSQL configConnectionSQL = new ConfigConnectionSQL();
         if (!isStartSQL) {
             try {
@@ -56,4 +57,6 @@ public class ConnectionManager {
             }
         }
     }
+
+    */
 }

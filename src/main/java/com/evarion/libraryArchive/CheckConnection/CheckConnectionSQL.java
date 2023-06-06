@@ -1,7 +1,7 @@
-package com.evarion.dataBase;
+package com.evarion.libraryArchive.CheckConnection;
 
 import com.evarion.gui.TopButtonMenu;
-import com.evarion.gui.actionButtonListeners.ActionStartStopConnectionSQL;
+
 import javax.swing.*;
 import java.sql.SQLException;
 
@@ -26,7 +26,7 @@ public class CheckConnectionSQL {
                 if (!ActionStartStopConnectionSQL.stopManualConnection) {
                     if (connected) {
                         {
-                            ConnectionManager.startConnectionSQL();
+                            //ConnectionManager.startConnectionSQL();
                             System.out.println("соединение с БД повторно установлено");
                             ConnectionManager.isStartSQL = true;
                             connected = false;
