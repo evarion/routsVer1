@@ -1,4 +1,4 @@
-package com.evarion.hibernate.models;
+package com.evarion.hibernateLibrary.models;
 
 import javax.persistence.*;
 @Entity

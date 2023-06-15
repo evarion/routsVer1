@@ -1,8 +1,8 @@
-package com.evarion.hibernate;
+package com.evarion.hibernateLibrary;
 
-import com.evarion.hibernate.models.Auto;
-import com.evarion.hibernate.models.User;
-import com.evarion.hibernate.services.UserService;
+import com.evarion.hibernateLibrary.models.Auto;
+import com.evarion.hibernateLibrary.models.User;
+import com.evarion.hibernateLibrary.services.UserService;
 
 import java.sql.SQLException;
 

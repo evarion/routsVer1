@@ -1,10 +1,10 @@
-package com.evarion.hibernate.dao;
+package com.evarion.hibernateLibrary.dao;
 
-import com.evarion.hibernate.models.Auto;
-import com.evarion.hibernate.models.User;
+import com.evarion.hibernateLibrary.models.Auto;
+import com.evarion.hibernateLibrary.models.User;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import com.evarion.hibernate.utils.HibernateSessionFactoryUtil;
+import com.evarion.hibernateLibrary.utils.HibernateSessionFactoryUtil;
 import java.util.List;
 
 public class UserDao {

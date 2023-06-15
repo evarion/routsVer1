@@ -1,6 +1,6 @@
-package com.evarion.hibernate.utils;
-import com.evarion.hibernate.models.Auto;
-import com.evarion.hibernate.models.User;
+package com.evarion.hibernateLibrary.utils;
+import com.evarion.hibernateLibrary.models.Auto;
+import com.evarion.hibernateLibrary.models.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

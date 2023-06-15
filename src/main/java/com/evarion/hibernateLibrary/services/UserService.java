@@ -1,8 +1,8 @@
-package com.evarion.hibernate.services;
+package com.evarion.hibernateLibrary.services;
 
-import com.evarion.hibernate.dao.UserDao;
-import com.evarion.hibernate.models.Auto;
-import com.evarion.hibernate.models.User;
+import com.evarion.hibernateLibrary.dao.UserDao;
+import com.evarion.hibernateLibrary.models.Auto;
+import com.evarion.hibernateLibrary.models.User;
 
 import java.util.List;
 
