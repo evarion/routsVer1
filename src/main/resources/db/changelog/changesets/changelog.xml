@@ -13,6 +13,5 @@
     <include file="70-changeset-create-status-table.xml" relativeToChangelogFile="true"/>
     <include file="80-changeset-create-typeconteiner-table.xml" relativeToChangelogFile="true"/>
     <include file="90-changeset-create-sizeconteiner-table.xml" relativeToChangelogFile="true"/>
-
     <include file="01-changeset-create-delivery-table.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>

@@ -1,7 +1,6 @@
 package com.evarion;
 
-import com.evarion.dataBase.ConfigConnectionSQL;
-import com.evarion.libraryArchive.CheckConnection.ConnectionManager;
+import com.evarion.dataBaseConfig.ConfigConnectionSQL;
 import com.evarion.gui.FrameMain;
 import com.evarion.liquibase.DbMigrator;
 

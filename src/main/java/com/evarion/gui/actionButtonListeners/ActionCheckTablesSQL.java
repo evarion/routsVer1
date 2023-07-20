@@ -2,7 +2,7 @@ package com.evarion.gui.actionButtonListeners;
 
 
 
-import com.evarion.dataBase.ConfigConnectionSQL;
+import com.evarion.dataBaseConfig.ConfigConnectionSQL;
 import com.evarion.liquibase.CheckTableInDataBase;
 
 import java.awt.event.ActionEvent;

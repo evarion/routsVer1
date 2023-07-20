@@ -1,4 +1,4 @@
-package com.evarion.dataBase;
+package com.evarion.dataBaseConfig;
 
 public class ConfigConnectionSQL {
     String rootChangeLog = "db/changelog/db.changelog-master.xml";

@@ -1,13 +1,7 @@
 package com.evarion.libraryArchive.CheckConnection;
 
-import com.evarion.dataBase.ConfigConnectionSQL;
-import com.evarion.gui.TopButtonMenu;
-
 import javax.swing.*;
 import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 
 public class ConnectionManager {

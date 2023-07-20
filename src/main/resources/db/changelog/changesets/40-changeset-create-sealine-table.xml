@@ -9,7 +9,7 @@
             <column name="id" type="int" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
-            <column name="NameLine" type="varchar(200)"/>
+            <column name="nameline" type="varchar(200)"/>
 
         </createTable>
     </changeSet>
