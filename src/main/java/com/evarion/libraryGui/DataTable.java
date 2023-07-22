@@ -1,6 +1,6 @@
 package com.evarion.libraryGui;
 
-/*import com.evarion.gui.FrameMain;
+import com.evarion.gui.FrameMain;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,4 +54,3 @@ public class DataTable extends JFrame {
         return contents;
     }
 }
-*/

@@ -3,6 +3,7 @@ package com.evarion.dataBaseRequest;
 import com.evarion.dataBaseConfig.ConfigConnectionSQL;
 
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ public class RequestDataBase extends AbstractTableModel {
     ArrayList<String[]> dataArrayList;
     ConfigConnectionSQL configConnectionSQL = new ConfigConnectionSQL();
     int columnCount = 11;
+
 
     public RequestDataBase() {
         dataArrayList = new ArrayList<String[]>();
@@ -31,6 +33,7 @@ public class RequestDataBase extends AbstractTableModel {
 
 
     public ResultSet resultSetQuery(String query) {
+
         startConnection();
         Statement statement = null;
         try {
@@ -44,6 +47,7 @@ public class RequestDataBase extends AbstractTableModel {
     }
 
     public void sqlQuery(String query) {
+
         startConnection();
         Statement statement = null;
         try {
@@ -70,6 +74,7 @@ public class RequestDataBase extends AbstractTableModel {
 
     public Object getValueAt(int rowIndex, int columnIndex) {
         String[] rows = dataArrayList.get(rowIndex);
+
         return rows[columnIndex];
     }
 
@@ -83,6 +88,9 @@ public class RequestDataBase extends AbstractTableModel {
     public void addData() {
         startConnection();
         ResultSet result = resultSetQuery("SELECT * FROM delivery");
+
+
+
         try {
             while (result.next()) {
                 String[] row = {
@@ -97,9 +105,9 @@ public class RequestDataBase extends AbstractTableModel {
                         result.getString("status_id"),
                         result.getString("typeconteiner_id"),
                         result.getString("sizeconteiner_id")};
-
                 addData(row);
             }
+
 
         } catch (SQLException e) {
             e.printStackTrace();
