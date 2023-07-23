@@ -1,4 +1,4 @@
-package com.evarion.dataBaseRequest;
+package com.evarion.librarySqlJTableRequesst;
 
 class DeliveryData1 {
     private String id;

@@ -1,4 +1,4 @@
-package com.evarion.dataBaseRequest;
+package com.evarion.librarySqlJTableRequesst;
 
 import com.evarion.dataBaseConfig.ConfigConnectionSQL;
 

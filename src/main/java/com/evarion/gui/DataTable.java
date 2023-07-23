@@ -1,6 +1,6 @@
 package com.evarion.gui;
 
-import com.evarion.dataBaseRequest.DataDeliveryTest;
+import com.evarion.dataBaseRequest.DataDeliveryMain;
 
 
 import javax.swing.*;
@@ -13,8 +13,8 @@ public class DataTable extends JFrame {
 
 
     public static Box constructDataTable() {
-        DataDeliveryTest dataDeliveryTest = new DataDeliveryTest();
-        dataDeliveryTest.runDataSQL();
+        DataDeliveryMain dataDeliveryMain = new DataDeliveryMain();
+        dataDeliveryMain.runDataSQL();
 
 
 
