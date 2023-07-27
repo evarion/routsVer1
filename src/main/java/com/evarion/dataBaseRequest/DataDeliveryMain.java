@@ -6,9 +6,9 @@ import java.awt.*;
 import java.sql.*;
 import java.util.*;
 import javax.swing.*;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.*;
 
 import static com.evarion.gui.DataTable.table1;
 
@@ -68,6 +68,8 @@ public class DataDeliveryMain {
             System.out.println(e);
         }
         table1 = new JTable(data, columnNames);
+        //table1.setAutoCreateRowSorter (true); //сортировка
+
 
         TableColumn column;
         for (int i = 0; i < table1.getColumnCount(); i++) {
@@ -77,6 +79,8 @@ public class DataDeliveryMain {
         }
 
         table1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        //updateTable();
+        updateTableEnter();
 
         for (int column1 = 0; column1 < table1.getColumnCount(); column1++) {
             TableColumn tableColumn = table1.getColumnModel().getColumn(column1);
@@ -89,9 +93,7 @@ public class DataDeliveryMain {
                 int width = c.getPreferredSize().width + table1.getIntercellSpacing().width;
 
                 preferredWidth = Math.max(preferredWidth, width);
-
                 //  We've exceeded the maximum width, no need to check other rows
-
                 if (preferredWidth >= maxWidth) {
                     //preferredWidth = maxWidth;
                     break;
@@ -100,12 +102,13 @@ public class DataDeliveryMain {
             TableColumnModel tcm = table1.getColumnModel();//ширина колонок
             settingColumn(tcm);
             settingColourHeader();
+            setBoxCellColumn();
             //tableColumn.setPreferredWidth( preferredWidth );
         }
     }
 
     public void settingColumn(TableColumnModel tcm) {
-        for (int i = 0; i < table1.getColumnCount(); i++) { //переписать на switch
+        for (int i = 0; i < table1.getColumnCount(); i++) {
             if (tcm.getColumn(i).getHeaderValue().equals("container")) {
                 tcm.getColumn(i).setHeaderValue("КОНТЕЙНЕР");
             }
@@ -142,6 +145,30 @@ public class DataDeliveryMain {
                 tcm.getColumn(i).setHeaderValue("РАЗМЕР КНТР");
             }
         }
+        //setBoxCellColumn();
+    }
+
+    public void setBoxCellColumn() {
+        Connection connection = null;
+        TableColumn sportColumn = table1.getColumnModel().getColumn(2);
+        JComboBox comboBox = new JComboBox();
+        String result = "";
+        try {
+            connection = DriverManager.getConnection(configConnectionSQL.getJdbcUrl(), configConnectionSQL.getLogin(),
+                    configConnectionSQL.getPassword());
+            String sql = "SELECT country FROM country";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while (resultSet.next()) {
+                String country = resultSet.getString("country");
+                // получение содержимого строк
+                comboBox.addItem(country);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        sportColumn.setCellEditor(new DefaultCellEditor(comboBox));
     }
 
 
@@ -149,4 +176,53 @@ public class DataDeliveryMain {
         table1.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
         table1.getTableHeader().setBackground(Color.ORANGE);
     }
+
+
+    public void updateTableEnter() {
+        table1.getModel().addTableModelListener(
+                new TableModelListener() {
+                    public void tableChanged(TableModelEvent evt) {
+                        Connection connection = null;
+                        try {
+                            connection = DriverManager.getConnection(configConnectionSQL.getJdbcUrl(), configConnectionSQL.getLogin(),
+                                    configConnectionSQL.getPassword());
+
+                            int col = evt.getColumn();
+                            int row = evt.getLastRow();
+                            Object value;
+                            String header;
+                            value = table1.getValueAt(row, col);
+                            header = table1.getColumnName(col);
+                            // String sql = "UPDATE  delivery SET  country_id = '" + 1 + "' WHERE id = " + row;
+                            // String sql = "UPDATE " + header + " SET " +header +" = '" +value+"' WHERE id = " +row;
+                            // System.out.println("запрос = "+sql);
+                            System.out.println("col = " + col + " row = " + row + " значение = " + value + " заголовок = " + header);
+                            // here goes your code "on cell update"
+                            Statement statement = connection.createStatement();
+                            // statement.executeQuery(sql);
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
+
+    public void updateTable() {
+        table1.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                int row = table1.rowAtPoint(evt.getPoint());
+                int col = table1.columnAtPoint(evt.getPoint());
+                Object value;
+                if (row >= 0 && col >= 0) {
+                    System.out.println("col = " + col + " " + "row = " + row);
+                    value = table1.getValueAt(row, col);
+                    System.out.println("значение = " + value.toString());
+                }
+            }
+        });
+    }
 }
+
+
