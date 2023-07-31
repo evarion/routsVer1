@@ -7,7 +7,6 @@ import java.sql.*;
 import java.util.*;
 import javax.swing.JTable;
 import javax.swing.table.*;
-
 import static com.evarion.dataMainLeft.DataTable.table1;
 
 public class DataDeliveryMain {

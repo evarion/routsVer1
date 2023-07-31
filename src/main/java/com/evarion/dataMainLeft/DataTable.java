@@ -1,7 +1,6 @@
 package com.evarion.dataMainLeft;
 
 import com.evarion.gui.FrameMain;
-
 import javax.swing.*;
 import java.awt.*;
 
