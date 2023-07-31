@@ -1,7 +1,7 @@
 package com.evarion.librarySqlJTableRequesst;
 
 import com.evarion.dataBaseConfig.ConfigConnectionSQL;
-import com.evarion.gui.DataTable;
+import com.evarion.dataMainLeft.DataTable;
 
 
 import javax.swing.table.DefaultTableModel;

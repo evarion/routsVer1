@@ -1,4 +1,4 @@
-package com.evarion.dataBaseRequest;
+package com.evarion.dataMainLeft;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static com.evarion.dataBaseRequest.DataDeliveryMain.configConnectionSQL;
+import static com.evarion.dataMainLeft.DataDeliveryMain.configConnectionSQL;
 
 
 public class UpdateTableSQL {

@@ -1,4 +1,4 @@
-package com.evarion.dataBaseRequest;
+package com.evarion.dataMainLeft;
 
 import javax.swing.*;
 import javax.swing.table.TableColumn;
@@ -7,7 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import static com.evarion.dataBaseRequest.DataDeliveryMain.configConnectionSQL;
+import static com.evarion.dataMainLeft.DataDeliveryMain.configConnectionSQL;
 
 
 public class SetTableMain {

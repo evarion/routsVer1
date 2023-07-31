@@ -1,5 +1,7 @@
 package com.evarion.gui;
 
+import com.evarion.dataMainLeft.DataTable;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -173,7 +175,9 @@ public class DataPanel extends JFrame {
         constraints.weightx = 1.0;
         constraints.weighty = 1.0;
         dataRightTop.setBackground(Color.LIGHT_GRAY);
+
         dataRightBottom.setBackground(Color.GRAY);
+
 
         splitPaneVertical.setResizeWeight(0.5);
         splitPaneVertical.setTopComponent(dataRightTop);
