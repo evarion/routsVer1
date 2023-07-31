@@ -1,22 +1,19 @@
 package com.evarion.gui;
 
 import com.evarion.dataBaseRequest.DataDeliveryMain;
-
-
 import javax.swing.*;
 import java.awt.*;
 
 
 public class DataTable extends JFrame {
+    public static JTable table1 = new JTable(
 
-    public static JTable table1 = new JTable();
+    );
 
 
     public static Box constructDataTable() {
         DataDeliveryMain dataDeliveryMain = new DataDeliveryMain();
-        dataDeliveryMain.runDataSQL();
-
-
+        dataDeliveryMain.runMainDataSQL();
 
         FrameMain.jVisiblePanelDataLeft.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
@@ -29,3 +26,5 @@ public class DataTable extends JFrame {
         return contents;
     }
 }
+
+

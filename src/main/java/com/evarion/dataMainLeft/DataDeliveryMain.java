@@ -5,20 +5,21 @@ import com.evarion.dataBaseConfig.ConfigConnectionSQL;
 import java.awt.*;
 import java.sql.*;
 import java.util.*;
-import javax.swing.*;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
+import javax.swing.JTable;
 import javax.swing.table.*;
 
-import static com.evarion.gui.DataTable.table1;
+import static com.evarion.dataMainLeft.DataTable.table1;
 
 public class DataDeliveryMain {
     static ConfigConnectionSQL configConnectionSQL = new ConfigConnectionSQL();
+    SetTableMain setTableMain= new SetTableMain();
 
-    public void runDataSQL() {
-        Connection connection = null;
-        Vector columnNames = new Vector();
-        Vector data = new Vector();
+
+    public void runMainDataSQL() {
+        Connection connection;
+        Vector<String> columnNames = new Vector<>();
+        Vector<Vector<Object>> data = new Vector<>();
+      //  setTableMain.stopEditJTable(table1);
 
         try {
             connection = DriverManager.getConnection(configConnectionSQL.getJdbcUrl(), configConnectionSQL.getLogin(),
@@ -56,7 +57,7 @@ public class DataDeliveryMain {
                 columnNames.addElement(metaData.getColumnName(i));
             }
             while (resultSet.next()) {
-                Vector row = new Vector(columns);
+                Vector<Object> row = new Vector<>(columns);
                 for (int i = 1; i <= columns; i++) {
                     row.addElement(resultSet.getObject(i));
                 }
@@ -65,22 +66,18 @@ public class DataDeliveryMain {
             resultSet.close();
             statement.close();
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
         table1 = new JTable(data, columnNames);
         //table1.setAutoCreateRowSorter (true); //сортировка
-
-
         TableColumn column;
         for (int i = 0; i < table1.getColumnCount(); i++) {
             column = table1.getColumnModel().getColumn(i);
             column.setMaxWidth(250);
             column.setPreferredWidth(110);//ширина колонок
         }
-
         table1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         //updateTable();
-        updateTableEnter();
 
         for (int column1 = 0; column1 < table1.getColumnCount(); column1++) {
             TableColumn tableColumn = table1.getColumnModel().getColumn(column1);
@@ -102,10 +99,17 @@ public class DataDeliveryMain {
             TableColumnModel tcm = table1.getColumnModel();//ширина колонок
             settingColumn(tcm);
             settingColourHeader();
-            setBoxCellColumn();
+
+            setTableMain.setBoxCellColumn(table1);
             //tableColumn.setPreferredWidth( preferredWidth );
         }
+        UpdateTableSQL.updateTableEnter(table1);
+        UpdateTableSQL.updateTable(table1);
+       // UpdateTableSQL.updTable(table1);
+
+
     }
+
 
     public void settingColumn(TableColumnModel tcm) {
         for (int i = 0; i < table1.getColumnCount(); i++) {
@@ -145,32 +149,7 @@ public class DataDeliveryMain {
                 tcm.getColumn(i).setHeaderValue("РАЗМЕР КНТР");
             }
         }
-        //setBoxCellColumn();
     }
-
-    public void setBoxCellColumn() {
-        Connection connection = null;
-        TableColumn sportColumn = table1.getColumnModel().getColumn(2);
-        JComboBox comboBox = new JComboBox();
-        String result = "";
-        try {
-            connection = DriverManager.getConnection(configConnectionSQL.getJdbcUrl(), configConnectionSQL.getLogin(),
-                    configConnectionSQL.getPassword());
-            String sql = "SELECT country FROM country";
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
-
-            while (resultSet.next()) {
-                String country = resultSet.getString("country");
-                // получение содержимого строк
-                comboBox.addItem(country);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        sportColumn.setCellEditor(new DefaultCellEditor(comboBox));
-    }
-
 
     public void settingColourHeader() {
         table1.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
@@ -178,51 +157,7 @@ public class DataDeliveryMain {
     }
 
 
-    public void updateTableEnter() {
-        table1.getModel().addTableModelListener(
-                new TableModelListener() {
-                    public void tableChanged(TableModelEvent evt) {
-                        Connection connection = null;
-                        try {
-                            connection = DriverManager.getConnection(configConnectionSQL.getJdbcUrl(), configConnectionSQL.getLogin(),
-                                    configConnectionSQL.getPassword());
 
-                            int col = evt.getColumn();
-                            int row = evt.getLastRow();
-                            Object value;
-                            String header;
-                            value = table1.getValueAt(row, col);
-                            header = table1.getColumnName(col);
-                            // String sql = "UPDATE  delivery SET  country_id = '" + 1 + "' WHERE id = " + row;
-                            // String sql = "UPDATE " + header + " SET " +header +" = '" +value+"' WHERE id = " +row;
-                            // System.out.println("запрос = "+sql);
-                            System.out.println("col = " + col + " row = " + row + " значение = " + value + " заголовок = " + header);
-                            // here goes your code "on cell update"
-                            Statement statement = connection.createStatement();
-                            // statement.executeQuery(sql);
-                        } catch (SQLException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-    }
-
-
-    public void updateTable() {
-        table1.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                int row = table1.rowAtPoint(evt.getPoint());
-                int col = table1.columnAtPoint(evt.getPoint());
-                Object value;
-                if (row >= 0 && col >= 0) {
-                    System.out.println("col = " + col + " " + "row = " + row);
-                    value = table1.getValueAt(row, col);
-                    System.out.println("значение = " + value.toString());
-                }
-            }
-        });
-    }
 }
 
 
