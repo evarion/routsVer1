@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.*;
 
 
+
 public class MainMenuItem extends JFrame {
   static   JPopupMenu menu = new JPopupMenu();
 
@@ -14,13 +15,15 @@ public class MainMenuItem extends JFrame {
 
                 int yPositionMenu = TopButtonMenu.jButtonMainMenu.getY() + 20;
                 menu.show(e.getComponent(), menu.getX(), yPositionMenu);
+
             }
         });
 
 
-        menu.add(new JMenuItem(new AbstractAction("First Item Menu Component") {
+        menu.add(new JMenuItem(new AbstractAction("НАСТРОЙКИ") {
             @Override
             public void actionPerformed(ActionEvent e) {
+                    MainSet.testDialogSET();
 
             }
         }));

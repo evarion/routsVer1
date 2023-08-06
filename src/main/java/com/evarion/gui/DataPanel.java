@@ -1,7 +1,5 @@
 package com.evarion.gui;
 
-import com.evarion.dataMainLeft.DataTable;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -131,7 +129,7 @@ public class DataPanel extends JFrame {
     public static void createDataLeft() {//добавление таблицы данных
 
         dataLeft.setLayout(new BorderLayout());
-        Box contents = DataTable.constructDataTable();
+        Box contents = DataTableLMain.constructDataTable();
         dataLeft.add(contents, BorderLayout.CENTER);
     }
 
@@ -175,14 +173,27 @@ public class DataPanel extends JFrame {
         constraints.weightx = 1.0;
         constraints.weighty = 1.0;
         dataRightTop.setBackground(Color.LIGHT_GRAY);
-
+        createDataRightTop();
         dataRightBottom.setBackground(Color.GRAY);
-
+        createDataRightBottom();
 
         splitPaneVertical.setResizeWeight(0.5);
         splitPaneVertical.setTopComponent(dataRightTop);
         splitPaneVertical.setBottomComponent(dataRightBottom);
         dataRight.add(splitPaneVertical, constraints);
+    }
+
+    public static void createDataRightTop() {
+        dataRightTop.setLayout(new BorderLayout());
+        Box contents = DataTableRTop.constructDataTable();
+        dataRightTop.add(contents, BorderLayout.CENTER);
+    }
+
+
+    public static void createDataRightBottom() {
+        dataRightBottom.setLayout(new BorderLayout());
+        Box contents = DataTableRBottom.constructDataTable();
+        dataRightBottom.add(contents, BorderLayout.CENTER);
     }
 
 

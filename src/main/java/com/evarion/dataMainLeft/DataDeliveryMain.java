@@ -1,13 +1,12 @@
 package com.evarion.dataMainLeft;
 
 import com.evarion.dataBaseConfig.ConfigConnectionSQL;
-
 import java.awt.*;
 import java.sql.*;
 import java.util.*;
 import javax.swing.JTable;
 import javax.swing.table.*;
-import static com.evarion.dataMainLeft.DataTable.table1;
+import static com.evarion.gui.DataTableLMain.dataJTableMain;
 
 public class DataDeliveryMain {
     static ConfigConnectionSQL configConnectionSQL = new ConfigConnectionSQL();
@@ -46,7 +45,8 @@ public class DataDeliveryMain {
                     "JOIN typeconteiner \n" +
                     "ON delivery.typeconteiner_id=typeconteiner.id\n" +
                     "JOIN vessel \n" +
-                    "ON delivery.vessel_id=vessel.id";
+                    "ON delivery.vessel_id=vessel.id \n"+
+                    "ORDER BY ID";// сортировка по id
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
@@ -67,26 +67,26 @@ public class DataDeliveryMain {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        table1 = new JTable(data, columnNames);
+        dataJTableMain = new JTable(data, columnNames);
         //table1.setAutoCreateRowSorter (true); //сортировка
         TableColumn column;
-        for (int i = 0; i < table1.getColumnCount(); i++) {
-            column = table1.getColumnModel().getColumn(i);
+        for (int i = 0; i < dataJTableMain.getColumnCount(); i++) {
+            column = dataJTableMain.getColumnModel().getColumn(i);
             column.setMaxWidth(250);
             column.setPreferredWidth(110);//ширина колонок
         }
-        table1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        dataJTableMain.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         //updateTable();
 
-        for (int column1 = 0; column1 < table1.getColumnCount(); column1++) {
-            TableColumn tableColumn = table1.getColumnModel().getColumn(column1);
+        for (int column1 = 0; column1 < dataJTableMain.getColumnCount(); column1++) {
+            TableColumn tableColumn = dataJTableMain.getColumnModel().getColumn(column1);
             int preferredWidth = tableColumn.getMinWidth();
             int maxWidth = tableColumn.getMaxWidth();
 
-            for (int row = 0; row < table1.getRowCount(); row++) {
-                TableCellRenderer cellRenderer = table1.getCellRenderer(row, column1);
-                Component c = table1.prepareRenderer(cellRenderer, row, column1);
-                int width = c.getPreferredSize().width + table1.getIntercellSpacing().width;
+            for (int row = 0; row < dataJTableMain.getRowCount(); row++) {
+                TableCellRenderer cellRenderer = dataJTableMain.getCellRenderer(row, column1);
+                Component c = dataJTableMain.prepareRenderer(cellRenderer, row, column1);
+                int width = c.getPreferredSize().width + dataJTableMain.getIntercellSpacing().width;
 
                 preferredWidth = Math.max(preferredWidth, width);
                 //  We've exceeded the maximum width, no need to check other rows
@@ -95,15 +95,15 @@ public class DataDeliveryMain {
                     break;
                 }
             }
-            TableColumnModel tcm = table1.getColumnModel();//ширина колонок
+            TableColumnModel tcm = dataJTableMain.getColumnModel();//ширина колонок
             settingColumn(tcm);
             settingColourHeader();
 
-            setTableMain.setBoxCellColumn(table1);
+            setTableMain.setBoxCellColumn(dataJTableMain);
             //tableColumn.setPreferredWidth( preferredWidth );
         }
-        UpdateTableSQL.updateTableEnter(table1);
-        UpdateTableSQL.updateTable(table1);
+        UpdateTableSQL.updateTableEnter(dataJTableMain);
+        UpdateTableSQL.updateTable(dataJTableMain);
        // UpdateTableSQL.updTable(table1);
 
 
@@ -111,7 +111,7 @@ public class DataDeliveryMain {
 
 
     public void settingColumn(TableColumnModel tcm) {
-        for (int i = 0; i < table1.getColumnCount(); i++) {
+        for (int i = 0; i < dataJTableMain.getColumnCount(); i++) {
             if (tcm.getColumn(i).getHeaderValue().equals("container")) {
                 tcm.getColumn(i).setHeaderValue("КОНТЕЙНЕР");
             }
@@ -151,8 +151,8 @@ public class DataDeliveryMain {
     }
 
     public void settingColourHeader() {
-        table1.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
-        table1.getTableHeader().setBackground(Color.ORANGE);
+        dataJTableMain.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
+        dataJTableMain.getTableHeader().setBackground(Color.ORANGE);
     }
 
 

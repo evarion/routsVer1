@@ -1,4 +1,4 @@
 package com.evarion.dataRightBotton;
 
-public class DataTableRightBotton {
+public class SetTableRightBottom {
 }

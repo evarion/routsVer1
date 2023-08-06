@@ -1,7 +1,7 @@
 package com.evarion.library.librarySqlJTableRequesst;
 
 import com.evarion.dataBaseConfig.ConfigConnectionSQL;
-import com.evarion.dataMainLeft.DataTable;
+import com.evarion.gui.DataTableLMain;
 
 
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +25,7 @@ public class RequestSQL {
         try{
             PreparedStatement pwt = connection.prepareStatement(sql);
             ResultSet rs  = pwt.executeQuery();
-            DefaultTableModel model = (DefaultTableModel) DataTable.table1.getModel();
+            DefaultTableModel model = (DefaultTableModel) DataTableLMain.dataJTableMain.getModel();
 
             while (rs.next()){
             model.addRow(new String[]{

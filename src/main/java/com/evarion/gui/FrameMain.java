@@ -8,12 +8,17 @@ import java.io.IOException;
 
 public class FrameMain extends JFrame {
 
-    JPanel mainPanel = new JPanel();
+    public static JPanel mainPanel = new JPanel();
     public static JPanel menuLeftJP0 = new JPanel();
     static JPanel menuTopJP0 = new JPanel();
     static JPanel dataCentreJP0 = new JPanel();
     public static JPanel jVisiblePanelMenuDataLeft = new JPanel();
     public static JPanel jVisiblePanelDataLeft = new JPanel();
+
+    public static JPanel jVisiblePanelDataRBottom = new JPanel();
+    public static JPanel jVisiblePanelDataRBTop = new JPanel();
+
+
     static JPanel menuDownInfoJP0 = new JPanel();
 
     public FrameMain() throws IOException {
@@ -22,6 +27,7 @@ public class FrameMain extends JFrame {
     }
 
     public void createGUI() throws IOException {
+
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocation(50, 40);
@@ -32,7 +38,7 @@ public class FrameMain extends JFrame {
     }
 
 
-    public void createMainPanel(){
+    public void createMainPanel() {
         add(mainPanel);
         mainPanel.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();

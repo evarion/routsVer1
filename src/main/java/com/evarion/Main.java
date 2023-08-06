@@ -8,11 +8,17 @@ import java.io.IOException;
 
 
 public class Main {
+    static FrameMain frame2 = null;
+
+
+    static int locMainFormX;
+    static int locMainFormY;
+
     public static void main(String[] args) {
 
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                FrameMain frame2 = null;
+                // FrameMain frame2 = null;
                 try {
                     frame2 = new FrameMain();
                 } catch (IOException e) {
@@ -22,6 +28,7 @@ public class Main {
                 frame2.setVisible(true);
             }
         });
+
 
         runDBMigrator();
         //ConnectionManager.startConnectionSQL();
@@ -33,6 +40,19 @@ public class Main {
         Thread thread = new Thread(connectionInfo);
         thread.start();
        */
+    }
+
+    public static void getLocMainForm() {
+        locMainFormX = frame2.getLocation().x;
+        locMainFormY = frame2.getLocation().y;
+    }
+
+    public static int getLocMainFormX() {
+        return locMainFormX;
+    }
+
+    public static int getLocMainFormY() {
+        return locMainFormY;
     }
 
 

@@ -1,14 +1,12 @@
-package com.evarion.dataMainLeft;
+package com.evarion.gui;
 
-import com.evarion.gui.FrameMain;
+import com.evarion.dataMainLeft.DataDeliveryMain;
 import javax.swing.*;
 import java.awt.*;
 
 
-public class DataTable extends JFrame {
-    public static JTable table1 = new JTable(
-
-    );
+public class DataTableLMain extends JFrame {
+    public static JTable dataJTableMain = new JTable();
 
 
     public static Box constructDataTable() {
@@ -20,9 +18,9 @@ public class DataTable extends JFrame {
         constraints.weighty = 100; //ok
 
         Box contents = new Box(BoxLayout.Y_AXIS);
-        contents.add(new JScrollPane(table1));
+        contents.add(new JScrollPane(dataJTableMain));
 
-        table1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        dataJTableMain.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         return contents;
     }
 }
