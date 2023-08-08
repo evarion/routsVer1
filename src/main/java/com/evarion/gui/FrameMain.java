@@ -1,5 +1,9 @@
 package com.evarion.gui;
 
+
+
+import com.evarion.Main;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -18,8 +22,10 @@ public class FrameMain extends JFrame {
     public static JPanel jVisiblePanelDataRBottom = new JPanel();
     public static JPanel jVisiblePanelDataRBTop = new JPanel();
 
-
     static JPanel menuDownInfoJP0 = new JPanel();
+
+
+    public static JDialog jDialogSetup = new JDialog();
 
     public FrameMain() throws IOException {
         super("Routs Logistic");
@@ -35,7 +41,10 @@ public class FrameMain extends JFrame {
         setIconImage(ImageIO.read(FrameMain.class.getResourceAsStream("/logo/logo1.png")));
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         createMainPanel();
+
     }
+
+
 
 
     public void createMainPanel() {
@@ -86,5 +95,9 @@ public class FrameMain extends JFrame {
         InfoPanel.createInfoPanel();
         menuDownInfoJP0.setBackground(Color.GRAY);
         mainPanel.add(menuDownInfoJP0, constraints);
+
+
     }
+
+
 }

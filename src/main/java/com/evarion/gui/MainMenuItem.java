@@ -1,21 +1,18 @@
 package com.evarion.gui;
 
+
 import javax.swing.*;
 import java.awt.event.*;
 
-
-
 public class MainMenuItem extends JFrame {
-  static   JPopupMenu menu = new JPopupMenu();
+    static JPopupMenu menu = new JPopupMenu();
 
 
     public static void createMainMenuButton() {//if
         TopButtonMenu.jButtonMainMenu.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
-
                 int yPositionMenu = TopButtonMenu.jButtonMainMenu.getY() + 20;
                 menu.show(e.getComponent(), menu.getX(), yPositionMenu);
-
             }
         });
 
@@ -23,8 +20,7 @@ public class MainMenuItem extends JFrame {
         menu.add(new JMenuItem(new AbstractAction("НАСТРОЙКИ") {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    MainSet.testDialogSET();
-
+               MainSetupDialog.testDialogSET();
             }
         }));
 

@@ -1,14 +1,11 @@
 package com.evarion.gui;
 
 import com.evarion.gui.actionButtonListeners.*;
-//import com.evarion.libraryArchive.CheckConnection.ActionStartStopConnectionSQL;
-
 import javax.swing.*;
 import java.awt.*;
 
 
 public class TopButtonMenu extends JFrame {
-
     public static JButton[] buttonsTopMenu = new JButton[25];
     static JButton jButtonMainMenu = new JButton("MENU");
 
@@ -61,6 +58,7 @@ public class TopButtonMenu extends JFrame {
 
         constraints.anchor = GridBagConstraints.EAST;
         MainMenuItem.createMainMenuButton();//test
+        MainSetupDialog.constructJDialog(FrameMain.jDialogSetup);
 
         constraints.insets.top = 5;
         constraints.insets.bottom = 3;
