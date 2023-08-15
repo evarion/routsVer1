@@ -1,6 +1,5 @@
 package com.evarion.gui;
 
-
 import javax.swing.*;
 import java.awt.event.*;
 

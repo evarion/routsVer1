@@ -1,6 +1,7 @@
 package com.evarion.gui;
 
 import com.evarion.gui.actionButtonListeners.*;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -51,6 +52,7 @@ public class TopButtonMenu extends JFrame {
         }
 
         constraints.weightx = 0.7;
+
         FrameMain.menuTopJP0.add(jPanelEmpty, constraints);
 
         jButtonMainMenu.setPreferredSize(new Dimension(80, 25));
@@ -58,7 +60,9 @@ public class TopButtonMenu extends JFrame {
 
         constraints.anchor = GridBagConstraints.EAST;
         MainMenuItem.createMainMenuButton();//test
-        MainSetupDialog.constructJDialog(FrameMain.jDialogSetup);
+
+        //MainSetupDialog.constructJDialog(FrameMain.jDialogSetup);
+        new MainSetupDialog(FrameMain.jDialogSetup);//вместо static
 
         constraints.insets.top = 5;
         constraints.insets.bottom = 3;
@@ -100,10 +104,10 @@ public class TopButtonMenu extends JFrame {
 
             //final int CONNECTION_CONTROL_BUTTON_INDEX = 23;
             //case 23://CONNECTION_CONTROL_BUTTON_INDEX:
-                //buttonsTopMenu[buttonStartStopConnectionSQL].addActionListener(new ActionStartStopConnectionSQL());
-                // TopButtonMenu.buttonsTopMenu[23].setToolTipText("нет соединения с БД");
-                // buttonsTopMenu[23].setIcon(stopConnectionSQL);
-                // break;
+            //buttonsTopMenu[buttonStartStopConnectionSQL].addActionListener(new ActionStartStopConnectionSQL());
+            // TopButtonMenu.buttonsTopMenu[23].setToolTipText("нет соединения с БД");
+            // buttonsTopMenu[23].setIcon(stopConnectionSQL);
+            // break;
 /*
             case 22:
                 buttonsTopMenu[22].addActionListener(new ActionStartConnectionSQL());

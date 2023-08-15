@@ -1,9 +1,5 @@
 package com.evarion.gui;
 
-
-
-import com.evarion.Main;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +7,6 @@ import java.io.IOException;
 
 
 public class FrameMain extends JFrame {
-
     public static JPanel mainPanel = new JPanel();
     public static JPanel menuLeftJP0 = new JPanel();
     static JPanel menuTopJP0 = new JPanel();
@@ -33,18 +28,13 @@ public class FrameMain extends JFrame {
     }
 
     public void createGUI() throws IOException {
-
-
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocation(50, 40);
         setMinimumSize(new Dimension(920, 640));
         setIconImage(ImageIO.read(FrameMain.class.getResourceAsStream("/logo/logo1.png")));
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         createMainPanel();
-
     }
-
-
 
 
     public void createMainPanel() {
@@ -95,9 +85,5 @@ public class FrameMain extends JFrame {
         InfoPanel.createInfoPanel();
         menuDownInfoJP0.setBackground(Color.GRAY);
         mainPanel.add(menuDownInfoJP0, constraints);
-
-
     }
-
-
 }
