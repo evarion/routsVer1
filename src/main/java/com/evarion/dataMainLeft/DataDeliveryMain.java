@@ -154,9 +154,6 @@ public class DataDeliveryMain {
         dataJTableMain.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
         dataJTableMain.getTableHeader().setBackground(Color.ORANGE);
     }
-
-
-
 }
 
 

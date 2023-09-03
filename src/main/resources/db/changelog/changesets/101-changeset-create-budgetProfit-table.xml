@@ -5,13 +5,13 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
     <changeSet id="create-table-budget" author="Aleks">
-        <createTable tableName="budget">
+        <createTable tableName="budgetprofit">
             <column name="id" type="int" autoIncrement="true">
-                <constraints nullable="false" primaryKey="true"/>
+                <constraints nullable="false" primaryKey="true"
+                             foreignKeyName="delivery_fk1" references="delivery(id)"/>
             </column>
             <column name="price" type="varchar(255)"/>
             <column name="profit" type="varchar(64)"/>
-
 
         </createTable>
     </changeSet>

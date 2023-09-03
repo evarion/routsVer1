@@ -3,6 +3,7 @@ package com.evarion;
 import com.evarion.dataBaseConfig.ConfigConnectionSQL;
 import com.evarion.gui.FrameMain;
 import com.evarion.liquibase.DbMigrator;
+
 import java.io.IOException;
 
 
@@ -22,6 +23,7 @@ public class Main {
                 frame2.setVisible(true);
             }
         });
+
 
         runDBMigrator();
         //ConnectionManager.startConnectionSQL();
@@ -48,7 +50,8 @@ public class Main {
     public static int getSizeFormH() {
         return frame2.getHeight();
     }
-    public static int getSizeFormW(){
+
+    public static int getSizeFormW() {
         return frame2.getWidth();
     }
 
@@ -62,9 +65,12 @@ public class Main {
 
 
     static void runDBMigrator() {
+
         ConfigConnectionSQL configConnectionSQL = new ConfigConnectionSQL();
         DbMigrator dbMigrator = new DbMigrator(configConnectionSQL.getRootChangeLog(), configConnectionSQL.getJdbcUrl(),
                 configConnectionSQL.getLogin(), configConnectionSQL.getPassword());
         dbMigrator.runDbMigrations();
+
+
     }
 }

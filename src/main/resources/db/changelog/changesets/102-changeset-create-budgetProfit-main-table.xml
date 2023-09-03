@@ -4,29 +4,18 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
 
-    <changeSet id="create-table-budget" author="Aleks">
-        <createTable tableName="budgetexpenses">
+    <changeSet id="create-table-budget-main" author="Aleks">
+        <createTable tableName="budgeteprofitmain">
             <column name="id" type="int" autoIncrement="true">
                 <constraints nullable="false" primaryKey="true"/>
             </column>
 
             <column name="price" type="varchar(255)"/>
-            <column name="expenses" type="varchar(64)"/>
+            <column name="profit" type="varchar(64)"/>
 
             <column name="fk_delivery" type="int">
-                <constraints foreignKeyName="delivery_fk" references="delivery(id)" />
+                <constraints foreignKeyName="delivery_fk" references="delivery(id)" unique="true" />
             </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>
-
-        <!--
-        SELECT delivery.container, budgetexpenses.price
-        FROM delivery
-        JOIN budgetexpenses ON delivery.id = budgetexpenses.id;
-
-
-        SELECT person.name, passport.number
-        FROM person
-        JOIN passport ON person.id = passport.person_id;
-        -->

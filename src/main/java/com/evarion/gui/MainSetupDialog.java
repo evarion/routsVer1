@@ -1,7 +1,6 @@
 package com.evarion.gui;
 
 import com.evarion.Main;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,13 +9,6 @@ public class MainSetupDialog {
     JPanel panelLeft = new JPanel();
     JPanel panelRight = new JPanel();
 
-    JLabel onePar = new JLabel("первый параметр");
-    JTextArea oneParInputTA = new JTextArea();
-    JButton oneBtnOk = new JButton("OK");
-
-    JLabel oneParR = new JLabel("первый параметр");
-    JTextArea oneParInputTAR = new JTextArea();
-    JButton oneBtnOkR = new JButton("OK");
 
     MainSetupDialog(JDialog jDialog) {
         constructJDialog(jDialog);
@@ -26,6 +18,7 @@ public class MainSetupDialog {
         //FrameMain.jDialogSetup.setLocationRelativeTo(FrameMain.mainPanel);//расположение по центру
         FrameMain.jDialogSetup.setLocation(Main.getLocMainFormX(), Main.getLocMainFormY());
         FrameMain.jDialogSetup.setMinimumSize(new Dimension(Main.getSizeFormW(), Main.getSizeFormH()));
+
         FrameMain.jDialogSetup.pack();
         FrameMain.jDialogSetup.setVisible(true);
     }
@@ -35,6 +28,7 @@ public class MainSetupDialog {
         jDialog.setLayout(new GridBagLayout());
 
         constructPanelDialogLeft();
+
         constructPanelDialogRight();
 
         GridBagConstraints constraints = new GridBagConstraints();
@@ -45,103 +39,87 @@ public class MainSetupDialog {
         constraints.gridy = 0;
         constraints.weighty = 1;
         constraints.weightx = 0.5;
-        panelLeft.setBackground(Color.magenta);
-        jDialog.add(panelLeft, constraints);
-
+        panelLeft.setBackground(Color.GRAY.brighter());
+        jDialog.add(new JScrollPane(panelLeft), constraints);
 
         constraints.gridx = 1;
         constraints.gridy = 0;
         constraints.weighty = 1;
         constraints.weightx = 0.5;
-        panelRight.setBackground(Color.orange);
-        jDialog.add(panelRight, constraints);
-
-
+        panelRight.setBackground(Color.GRAY.brighter());
+        jDialog.add(new JScrollPane(panelRight), constraints);
     }
 
     private void constructPanelDialogLeft() {
-        JPanel jPanelEmpty = new JPanel();
-        JPanel jPanelEmpty1 = new JPanel();
-        JPanel jPanelEmpty2 = new JPanel();
+        int countElement = 20;
+        JButton[] buttonParameterLeft = new JButton[countElement];
+        JLabel[] jLabelsParameterLeft = new JLabel[countElement];
+        JTextArea[] jTextAreasParameterLeft = new JTextArea[countElement];
 
-
-        panelLeft.setLayout(new GridBagLayout());
-
-        GridBagConstraints constraints = new GridBagConstraints();
-        constraints.anchor = GridBagConstraints.WEST;
-
-        constraints.gridx = 0;
-        constraints.gridy = 0;
-        panelLeft.add(onePar, constraints);
-
-        jPanelEmpty.setPreferredSize(new Dimension(10, 20));
-        constraints.gridx = 1;
-        constraints.gridy = 0;
-        jPanelEmpty.setBackground(Color.magenta);
-        panelLeft.add(jPanelEmpty, constraints);
-
-        oneParInputTA.setPreferredSize(new Dimension(100, 20));
-        constraints.gridx = 2;
-        constraints.gridy = 0;
-        panelLeft.add(oneParInputTA, constraints);
-
-        jPanelEmpty1.setPreferredSize(new Dimension(10, 20));
-        constraints.gridx = 3;
-        constraints.gridy = 0;
-        panelLeft.add(jPanelEmpty1, constraints);
-
-        constraints.gridx = 4;
-        constraints.gridy = 0;
-        panelLeft.add(oneBtnOk, constraints);
-
-        constraints.gridx = 5;
-        constraints.gridy = 0;
-        constraints.weightx = 0.1;
-        jPanelEmpty2.setBackground(Color.cyan);
-        panelLeft.add(jPanelEmpty2, constraints);
-
+        constructBtnTest(panelLeft, jLabelsParameterLeft, jTextAreasParameterLeft, buttonParameterLeft, countElement,
+                "Left");
     }
 
     private void constructPanelDialogRight() {
-        JPanel jPanelEmpty = new JPanel();
-        JPanel jPanelEmpty1 = new JPanel();
-        JPanel jPanelEmpty2 = new JPanel();
+        int countElement = 20;
+        JButton[] buttonParameterRight = new JButton[countElement];
+        JLabel[] jLabelsParameterRight = new JLabel[countElement];
+        JTextArea[] jTextAreasParameterRight = new JTextArea[countElement];
+
+        constructBtnTest(panelRight, jLabelsParameterRight, jTextAreasParameterRight, buttonParameterRight, countElement,
+                "Right");
+
+    }
 
 
-        panelRight.setLayout(new GridBagLayout());
-
+    private void constructBtnTest(JPanel jPanel, JLabel[] jLabelsParameter, JTextArea[] jTextAreasParameter,
+                                  JButton[] buttonParameter, int countElement, String nameParameter) {
+        jPanel.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.anchor = GridBagConstraints.WEST;
+        int panelEmptyY = countElement + 1;
+        int x = 0;
+        int y = 1;
 
+
+        for (int i = 0; i < buttonParameter.length; i++) {
+            jLabelsParameter[i] = new JLabel();
+            jLabelsParameter[i].setName("lbl" + nameParameter + i);
+            jLabelsParameter[i].setText("Test" + nameParameter + i);
+            constraints.insets.left = 20;
+            constraints.insets.top = 20;
+            constraints.gridx = x;
+            constraints.gridy = y;
+            jPanel.add(jLabelsParameter[i], constraints);
+
+            jTextAreasParameter[i] = new JTextArea();
+            jTextAreasParameter[i].setName("textArea" + nameParameter + i);
+            jTextAreasParameter[i].setPreferredSize(new Dimension(100, 20));
+            constraints.insets.left = 10;
+
+            x++;
+            constraints.gridx = x;
+            constraints.gridy = y;
+            jPanel.add(jTextAreasParameter[i], constraints);
+
+            x++;
+            buttonParameter[i] = new JButton("Test" + i);
+            buttonParameter[i].setName("btn" + i);
+            constraints.gridx = x;
+            constraints.gridy = y;
+            jPanel.add(buttonParameter[i], constraints);
+            x = 0;
+            y++;
+        }
+        JPanel jPanelEmpty3 = new JPanel();
         constraints.gridx = 0;
-        constraints.gridy = 0;
-        panelRight.add(oneParR, constraints);
-
-        jPanelEmpty.setPreferredSize(new Dimension(10, 20));
-        constraints.gridx = 1;
-        constraints.gridy = 0;
-        jPanelEmpty.setBackground(Color.magenta);
-        panelRight.add(jPanelEmpty, constraints);
-
-        oneParInputTAR.setPreferredSize(new Dimension(100, 20));
-        constraints.gridx = 2;
-        constraints.gridy = 0;
-        panelRight.add(oneParInputTAR, constraints);
-
-        jPanelEmpty1.setPreferredSize(new Dimension(10, 20));
-        constraints.gridx = 3;
-        constraints.gridy = 0;
-        panelRight.add(jPanelEmpty1, constraints);
-
-        constraints.gridx = 4;
-        constraints.gridy = 0;
-        panelRight.add(oneBtnOkR, constraints);
-
-        constraints.gridx = 5;
-        constraints.gridy = 0;
+        constraints.gridy = panelEmptyY;
+        constraints.gridwidth = 3;
         constraints.weightx = 0.1;
-        jPanelEmpty2.setBackground(Color.cyan);
-        panelRight.add(jPanelEmpty2, constraints);
+        constraints.weighty = 0.2;
+        jPanelEmpty3.setBackground(Color.cyan);
+        jPanel.add(jPanelEmpty3, constraints);
     }
 }
+
 
