@@ -11,6 +11,7 @@ public class Main {
     static FrameMain frame2 = null;
 
     public static void main(String[] args) {
+        runDBMigrator();
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 // FrameMain frame2 = null;
@@ -25,7 +26,6 @@ public class Main {
         });
 
 
-        runDBMigrator();
         //ConnectionManager.startConnectionSQL();
         /*final Runnable connectionInfo = new Runnable() {
             public void run() {

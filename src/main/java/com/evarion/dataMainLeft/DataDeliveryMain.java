@@ -1,23 +1,25 @@
 package com.evarion.dataMainLeft;
 
 import com.evarion.dataBaseConfig.ConfigConnectionSQL;
+
 import java.awt.*;
 import java.sql.*;
 import java.util.*;
 import javax.swing.JTable;
 import javax.swing.table.*;
+
 import static com.evarion.gui.DataTableLMain.dataJTableMain;
 
 public class DataDeliveryMain {
     static ConfigConnectionSQL configConnectionSQL = new ConfigConnectionSQL();
-    SetTableMain setTableMain= new SetTableMain();
+    SetTableMain setTableMain = new SetTableMain();
 
 
     public void runMainDataSQL() {
         Connection connection;
         Vector<String> columnNames = new Vector<>();
         Vector<Vector<Object>> data = new Vector<>();
-      //  setTableMain.stopEditJTable(table1);
+        //  setTableMain.stopEditJTable(table1);
 
         try {
             connection = DriverManager.getConnection(configConnectionSQL.getJdbcUrl(), configConnectionSQL.getLogin(),
@@ -45,10 +47,11 @@ public class DataDeliveryMain {
                     "JOIN typeconteiner \n" +
                     "ON delivery.typeconteiner_id=typeconteiner.id\n" +
                     "JOIN vessel \n" +
-                    "ON delivery.vessel_id=vessel.id \n"+
+                    "ON delivery.vessel_id=vessel.id \n" +
                     "ORDER BY ID";// сортировка по id
 
             Statement statement = connection.createStatement();
+
             ResultSet resultSet = statement.executeQuery(sql);
             ResultSetMetaData metaData = resultSet.getMetaData();
             int columns = metaData.getColumnCount();
@@ -101,10 +104,13 @@ public class DataDeliveryMain {
 
             setTableMain.setBoxCellColumn(dataJTableMain);
             //tableColumn.setPreferredWidth( preferredWidth );
+
         }
-        UpdateTableSQL.updateTableEnter(dataJTableMain);
-        UpdateTableSQL.updateTable(dataJTableMain);
-       // UpdateTableSQL.updTable(table1);
+        //UpdateTableSQL.updateTableEnter(dataJTableMain);
+        //UpdateTableSQL.updateTable(dataJTableMain);
+        //UpdateTableSQL.updTable(table1);
+        SelectRowActionMainData selectRowActionMainData = new SelectRowActionMainData();
+        selectRowActionMainData.selectRow(dataJTableMain);
 
 
     }

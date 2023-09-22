@@ -193,6 +193,7 @@ public class DataPanel extends JFrame {
     public static void createDataRightBottom() {
         dataRightBottom.setLayout(new BorderLayout());
         Box contents = DataTableRBottom.constructDataTable();
+
         dataRightBottom.add(contents, BorderLayout.CENTER);
     }
 
