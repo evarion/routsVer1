@@ -1,13 +1,11 @@
 package com.evarion.dataMainLeft;
 
 import com.evarion.dataBaseConfig.ConfigConnectionSQL;
-
 import java.awt.*;
 import java.sql.*;
 import java.util.*;
 import javax.swing.JTable;
 import javax.swing.table.*;
-
 import static com.evarion.gui.DataTableLMain.dataJTableMain;
 
 public class DataDeliveryMain {
@@ -109,8 +107,11 @@ public class DataDeliveryMain {
         //UpdateTableSQL.updateTableEnter(dataJTableMain);
         //UpdateTableSQL.updateTable(dataJTableMain);
         //UpdateTableSQL.updTable(table1);
+
+      //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         SelectRowActionMainData selectRowActionMainData = new SelectRowActionMainData();
-        selectRowActionMainData.selectRow(dataJTableMain);
+        //selectRowActionMainData.selectRow(dataJTableMain);
+        selectRowActionMainData.selectRowNew(dataJTableMain);
 
 
     }

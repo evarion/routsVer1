@@ -5,7 +5,6 @@ import com.evarion.dataMainLeft.SetTableMain;
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.sql.*;
 import java.util.Vector;
@@ -15,24 +14,26 @@ import static com.evarion.gui.DataTableRBottom.dataJTableRBottom; //
 public class DataDeliveryRBottom {
     static ConfigConnectionSQL configConnectionSQL = new ConfigConnectionSQL();
     static SetTableMain setTableMain = new SetTableMain();
+    static Vector<String> columnNames = new Vector<>();
+    static Vector<Vector<Object>> data = new Vector<>();
 
-    public void addAction(){
+    public void addAction() {
         SelectRowAction.selectRow(dataJTableRBottom);
     }
 
 
     public static void runRightBottomDataSQL(int value) {
+        data.clear();
         //int value =2;
         Connection connection;
-        Vector<String> columnNames = new Vector<>();
-        Vector<Vector<Object>> data = new Vector<>();
+
         //  setTableMain.stopEditJTable(table1);
 
         try {
             connection = DriverManager.getConnection(configConnectionSQL.getJdbcUrl(), configConnectionSQL.getLogin(),
                     configConnectionSQL.getPassword());
             // String sql = "SELECT * FROM delivery";
-            String sql = "SELECT * FROM budgeteprofitmain WHERE fk_delivery = "+value+"\n";
+            String sql = "SELECT * FROM budgeteprofitmain WHERE fk_delivery = " + value + "\n";
 
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
@@ -50,9 +51,11 @@ public class DataDeliveryRBottom {
             }
             resultSet.close();
             statement.close();
+            connection.close();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("ошибка "+e.getMessage());
         }
+
         dataJTableRBottom = new JTable(data, columnNames);
         //table1.setAutoCreateRowSorter (true); //сортировка
         TableColumn column;
@@ -80,35 +83,20 @@ public class DataDeliveryRBottom {
                     //preferredWidth = maxWidth;
                     break;
                 }
-
             }
 
-
-            TableColumnModel tcm = dataJTableRBottom.getColumnModel();//ширина колонок
+            //  TableColumnModel tcm = dataJTableRBottom.getColumnModel();//ширина колонок
             //settingColumn(tcm);
             settingColourHeader();
-
-
-
-            setTableMain.setBoxCellColumn(dataJTableRBottom);
-
-
-
-
-
-
-
+          //  setTableMain.setBoxCellColumn(dataJTableRBottom);
             //tableColumn.setPreferredWidth( preferredWidth );
         }
-       // UpdateTableSQL.updateTableEnter(dataJTableRBottom);
-      //  UpdateTableSQL.updateTable(dataJTableRBottom);
+        // UpdateTableSQL.updateTableEnter(dataJTableRBottom);
+        //  UpdateTableSQL.updateTable(dataJTableRBottom);
         // UpdateTableSQL.updTable(table1);
-
+       // dataSplitPaneHorizontal.updateUI(); //ok
 
     }
-
-
-
 
 /*
     public void settingColumn(TableColumnModel tcm) {

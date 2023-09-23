@@ -8,7 +8,7 @@ import java.io.IOException;
 
 
 public class Main {
-    static FrameMain frame2 = null;
+   public static FrameMain frame2 = null;
 
     public static void main(String[] args) {
         runDBMigrator();

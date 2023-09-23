@@ -1,7 +1,12 @@
 package com.evarion.gui;
 
+import com.evarion.dataMainLeft.SelectRowActionMainData;
+import com.evarion.dataRightBotton.DataDeliveryRBottom;
+
 import javax.swing.*;
 import java.awt.*;
+
+import static com.evarion.gui.DataTableLMain.dataJTableMain;
 
 
 public class DataPanel extends JFrame {
@@ -11,7 +16,7 @@ public class DataPanel extends JFrame {
     static JPanel menuDataRight = new JPanel();        //2
     static JPanel dataRight = new JPanel();            //2
     static JPanel dataRightTop = new JPanel();         //3
-    static JPanel dataRightBottom = new JPanel();      //3
+    public static JPanel dataRightBottom = new JPanel();      //3
     static JPanel mainDataLeft = new JPanel();         //1
     static JPanel mainDataRight = new JPanel();        //1
 
@@ -19,6 +24,7 @@ public class DataPanel extends JFrame {
     static JButton[] buttonsMenuDataLeft = new JButton[18];
 
     public static JSplitPane dataSplitPaneHorizontal = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, mainDataLeft, mainDataRight);//3
+    public static JSplitPane splitPaneVertical = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 
     public static void createDataPanel() {
         FrameMain.dataCentreJP0.setLayout(new GridBagLayout());
@@ -166,7 +172,7 @@ public class DataPanel extends JFrame {
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
         constraints.weighty = GridBagConstraints.NONE;
-        JSplitPane splitPaneVertical = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+
 
         constraints.gridx = 0;
         constraints.gridy = 0;
@@ -192,7 +198,7 @@ public class DataPanel extends JFrame {
 
     public static void createDataRightBottom() {
         dataRightBottom.setLayout(new BorderLayout());
-        Box contents = DataTableRBottom.constructDataTable();
+        Box contents = DataTableRBottom.constructDataTable(1);
 
         dataRightBottom.add(contents, BorderLayout.CENTER);
     }
