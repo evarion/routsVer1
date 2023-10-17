@@ -8,7 +8,6 @@ import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.sql.*;
 import java.util.Vector;
-
 import static com.evarion.gui.DataTableRBottom.dataJTableRBottom; //
 
 public class DataDeliveryRBottom {
@@ -95,7 +94,6 @@ public class DataDeliveryRBottom {
         //  UpdateTableSQL.updateTable(dataJTableRBottom);
         // UpdateTableSQL.updTable(table1);
        // dataSplitPaneHorizontal.updateUI(); //ok
-
     }
 
 /*

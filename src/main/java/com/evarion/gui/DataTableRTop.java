@@ -10,8 +10,8 @@ public class DataTableRTop {
     public static Box constructDataTable(){
         DataDeliveryRTop dataDeliveryRTop = new DataDeliveryRTop();
         dataDeliveryRTop.runRightTopDataSQL();
-
         FrameMain.jVisiblePanelDataRBTop.setLayout(new BorderLayout());
+
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.weighty=100;
 

@@ -1,13 +1,9 @@
 package com.evarion.dataMainLeft;
 
-
 import com.evarion.dataRightBotton.DataDeliveryRBottom;
-
-
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 import static com.evarion.gui.DataPanel.dataSplitPaneHorizontal;
 
 

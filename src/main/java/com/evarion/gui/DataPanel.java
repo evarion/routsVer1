@@ -1,13 +1,7 @@
 package com.evarion.gui;
 
-import com.evarion.dataMainLeft.SelectRowActionMainData;
-import com.evarion.dataRightBotton.DataDeliveryRBottom;
-
 import javax.swing.*;
 import java.awt.*;
-
-import static com.evarion.gui.DataTableLMain.dataJTableMain;
-
 
 public class DataPanel extends JFrame {
 
@@ -191,17 +185,23 @@ public class DataPanel extends JFrame {
 
     public static void createDataRightTop() {
         dataRightTop.setLayout(new BorderLayout());
+        final JTabbedPane tabbedPaneTop = new JTabbedPane();
         Box contents = DataTableRTop.constructDataTable();
-        dataRightTop.add(contents, BorderLayout.CENTER);
+        Box contentsBudgetExpenses = DataTableRTop.constructDataTable();
+        tabbedPaneTop.add("TEST1 ", contents);
+        tabbedPaneTop.add("TEST2 ", contentsBudgetExpenses);  //new JPanel())
+        dataRightTop.add(tabbedPaneTop, BorderLayout.CENTER);
     }
 
 
     public static void createDataRightBottom() {
         dataRightBottom.setLayout(new BorderLayout());
-        Box contents = DataTableRBottom.constructDataTable(1);
-
-        dataRightBottom.add(contents, BorderLayout.CENTER);
+        final JTabbedPane tabbedPaneBottom = new JTabbedPane();
+        Box contentsBudgetProfitMain = DataTableRBottom.constructDataTable(1);
+        Box contentsBudgetExpenses = DataTableRBottom.constructDataTable(1);
+        tabbedPaneBottom.add("ДОХОДЫ ", contentsBudgetProfitMain);
+        tabbedPaneBottom.add("РАСХОДЫ ", contentsBudgetExpenses);
+        // tabbedPaneBottom.add("РАСХОДЫ ", new JPanel());
+        dataRightBottom.add(tabbedPaneBottom, BorderLayout.CENTER);
     }
-
-
 }
