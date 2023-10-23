@@ -200,7 +200,7 @@ public class DataPanel extends JFrame {
         Box contentsBudgetProfitMain = DataTableRBottom.constructDataTable(1);
         Box contentsBudgetExpenses = DataTableRBottom.constructDataTable(1);
         tabbedPaneBottom.add("ДОХОДЫ ", contentsBudgetProfitMain);
-        tabbedPaneBottom.add("РАСХОДЫ ", contentsBudgetExpenses);
+       // tabbedPaneBottom.add("РАСХОДЫ ", contentsBudgetExpenses);
         // tabbedPaneBottom.add("РАСХОДЫ ", new JPanel());
         dataRightBottom.add(tabbedPaneBottom, BorderLayout.CENTER);
     }

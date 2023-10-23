@@ -17,7 +17,7 @@ public class DataDeliveryRBottom {
     static Vector<Vector<Object>> data = new Vector<>();
 
     public void addAction() {
-        SelectRowAction.selectRow(dataJTableRBottom);
+       // SelectRowAction.selectRow(dataJTableRBottom); //ОШИБКА  ИСПРАВИТЬ
     }
 
 
