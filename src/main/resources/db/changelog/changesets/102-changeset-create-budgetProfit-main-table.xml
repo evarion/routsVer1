@@ -10,12 +10,11 @@
                 <constraints nullable="false" primaryKey="true"/>
             </column>
 
-
             <column name="price" type="varchar(255)"/>
             <column name="profit" type="varchar(64)"/>
 
             <column name="fk_delivery" type="int">
-              <constraints foreignKeyName="delivery_fk" references="delivery(id)" />
+                <constraints foreignKeyName="delivery_fk" references="delivery(id)"/>
             </column>
         </createTable>
     </changeSet>

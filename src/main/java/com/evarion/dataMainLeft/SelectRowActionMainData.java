@@ -24,6 +24,7 @@ public class SelectRowActionMainData {
                         System.out.println("id выбрана строка = " + value);
                         result = Integer.parseInt(value);
                         DataDeliveryRBottom.runRightBottomDataSQL(result);
+
                     }
                 }
                 //  DataPanel.dataRightBottom.setVisible(false);
@@ -49,6 +50,7 @@ public class SelectRowActionMainData {
                         System.out.println("id выбрана строка из нового метода = " + value);
                         result = Integer.parseInt(value);
                         DataDeliveryRBottom.runRightBottomDataSQL(result);
+                        DataDeliveryRBottom.runRightBottomDataSQLBudgetExpenses(result);
                     }
                 }
                 dataSplitPaneHorizontal.updateUI(); //ok

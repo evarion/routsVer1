@@ -17,6 +17,9 @@ public class DataPanel extends JFrame {
     static JButton[] buttonsMenuDataRight = new JButton[8];
     static JButton[] buttonsMenuDataLeft = new JButton[18];
 
+    static JButton[] menuBottomJButtons = new JButton[8];
+    static JButton[] menuTopJButtons = new JButton[8];
+
     public static JSplitPane dataSplitPaneHorizontal = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, mainDataLeft, mainDataRight);//3
     public static JSplitPane splitPaneVertical = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 
@@ -127,7 +130,6 @@ public class DataPanel extends JFrame {
     //============================================================================================================
 
     public static void createDataLeft() {//добавление таблицы данных
-
         dataLeft.setLayout(new BorderLayout());
         Box contents = DataTableLMain.constructDataTable();
         dataLeft.add(contents, BorderLayout.CENTER);
@@ -139,17 +141,17 @@ public class DataPanel extends JFrame {
         menuDataRight.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.anchor = GridBagConstraints.WEST;
-
         constraints.insets.top = 8;
         constraints.insets.left = 8;//ok
         constraints.insets.bottom = 8;//ok
-
 
         for (int i = 0; i < buttonsMenuDataRight.length; i++) {
             buttonsMenuDataRight[i] = new JButton();
             buttonsMenuDataRight[i].setName("buttonsMenuDataRight" + i);
             buttonsMenuDataRight[i].setPreferredSize(new Dimension(20, 20));
             buttonsMenuDataRight[i].setMinimumSize(new Dimension(20, 20));
+
+
         }
 
         for (JButton jButton : buttonsMenuDataRight) {
@@ -160,19 +162,17 @@ public class DataPanel extends JFrame {
         menuDataRight.add(jPanelEmpty, constraints);
     }
 
-
     public static void createDataRightTopBottom() {
         dataRight.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
         constraints.weighty = GridBagConstraints.NONE;
 
-
         constraints.gridx = 0;
         constraints.gridy = 0;
         constraints.weightx = 1.0;
         constraints.weighty = 1.0;
-        dataRightTop.setBackground(Color.LIGHT_GRAY);
+        dataRightTop.setBackground(Color.GRAY);
         createDataRightTop();
         dataRightBottom.setBackground(Color.GRAY);
         createDataRightBottom();
@@ -184,24 +184,54 @@ public class DataPanel extends JFrame {
     }
 
     public static void createDataRightTop() {
+        JPanel topMenuRightBottomJPanel = new JPanel();
+        addButton(menuTopJButtons, topMenuRightBottomJPanel, "menuRTop");
         dataRightTop.setLayout(new BorderLayout());
         final JTabbedPane tabbedPaneTop = new JTabbedPane();
         Box contents = DataTableRTop.constructDataTable();
         Box contentsBudgetExpenses = DataTableRTop.constructDataTable();
         tabbedPaneTop.add("TEST1 ", contents);
         tabbedPaneTop.add("TEST2 ", contentsBudgetExpenses);  //new JPanel())
+        dataRightTop.add(topMenuRightBottomJPanel, BorderLayout.NORTH);
         dataRightTop.add(tabbedPaneTop, BorderLayout.CENTER);
     }
 
-
     public static void createDataRightBottom() {
+        JPanel buttonMenuRightBottomJPanel = new JPanel();
+        addButton(menuBottomJButtons, buttonMenuRightBottomJPanel, "menuRBottom");
         dataRightBottom.setLayout(new BorderLayout());
         final JTabbedPane tabbedPaneBottom = new JTabbedPane();
         Box contentsBudgetProfitMain = DataTableRBottom.constructDataTable(1);
-        Box contentsBudgetExpenses = DataTableRBottom.constructDataTable(1);
+        Box contentsBudgetExpenses = DataTableRBottom.constructDataTableBudgetExpenses(1);
         tabbedPaneBottom.add("ДОХОДЫ ", contentsBudgetProfitMain);
-       // tabbedPaneBottom.add("РАСХОДЫ ", contentsBudgetExpenses);
-        // tabbedPaneBottom.add("РАСХОДЫ ", new JPanel());
+        tabbedPaneBottom.add("РАСХОДЫ ", contentsBudgetExpenses);
+        dataRightBottom.add(buttonMenuRightBottomJPanel, BorderLayout.NORTH);
         dataRightBottom.add(tabbedPaneBottom, BorderLayout.CENTER);
+    }
+
+
+    public static void addButton(JButton[] jButtons, JPanel inputPanelButton, String nameButton) {
+        JPanel jPanelEmpty = new JPanel();
+        jPanelEmpty.setBackground(Color.GRAY.brighter());
+        inputPanelButton.setLayout(new GridBagLayout());
+        inputPanelButton.setBackground(Color.GRAY.brighter());
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.anchor = GridBagConstraints.WEST;
+        constraints.insets.top = 6;
+        constraints.insets.left = 6;//ok
+        constraints.insets.bottom = 6;//ok
+
+        for (int i = 0; i < jButtons.length; i++) {
+            jButtons[i] = new JButton();
+            jButtons[i].setName(nameButton + i);
+            jButtons[i].setPreferredSize(new Dimension(22, 22));
+            jButtons[i].setMinimumSize(new Dimension(22, 22));
+        }
+
+        for (JButton jButton : jButtons) {
+            inputPanelButton.add(jButton, constraints);
+        }
+        constraints.weightx = 0.2;
+        inputPanelButton.add(jPanelEmpty, constraints);
     }
 }
