@@ -91,6 +91,8 @@ public class TopButtonMenu extends JFrame {
                 buttonsTopMenu[buttonCheckTablesSQL].setToolTipText("ПРОВЕРКА ТАБЛИЦ");
                 break;
 
+
+
             case 24:
                 buttonsTopMenu[buttonSwitchRightMenu].addActionListener(new ActionSwitchRightMenu());
                 buttonsTopMenu[buttonSwitchRightMenu].setIcon(rightMenuVisible);
