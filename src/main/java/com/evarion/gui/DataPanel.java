@@ -116,7 +116,7 @@ public class DataPanel extends JFrame {
             buttonsMenuDataLeft[i].setName("buttonsMenuDataLeft" + i);
             buttonsMenuDataLeft[i].setPreferredSize(new Dimension(20, 20));
             buttonsMenuDataLeft[i].setMinimumSize(new Dimension(20, 20));
-        }
+        };
 
 
         for (JButton jButton : buttonsMenuDataLeft) {
@@ -182,6 +182,8 @@ public class DataPanel extends JFrame {
         splitPaneVertical.setBottomComponent(dataRightBottom);
         dataRight.add(splitPaneVertical, constraints);
     }
+
+    
 
     public static void createDataRightTop() {
         JPanel topMenuRightBottomJPanel = new JPanel();
