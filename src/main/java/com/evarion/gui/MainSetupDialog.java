@@ -1,6 +1,7 @@
 package com.evarion.gui;
 
 import com.evarion.Main;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,6 +9,7 @@ import java.awt.*;
 public class MainSetupDialog {
     JPanel panelLeft = new JPanel();
     JPanel panelRight = new JPanel();
+    JPanel panelDown = new JPanel();
 
 
     MainSetupDialog(JDialog jDialog) {
@@ -18,6 +20,7 @@ public class MainSetupDialog {
         //FrameMain.jDialogSetup.setLocationRelativeTo(FrameMain.mainPanel);//расположение по центру
         FrameMain.jDialogSetup.setLocation(Main.getLocMainFormX(), Main.getLocMainFormY());
         FrameMain.jDialogSetup.setMinimumSize(new Dimension(Main.getSizeFormW(), Main.getSizeFormH()));
+        FrameMain.jDialogSetup.setPreferredSize(new Dimension(Main.getSizeFormW(), Main.getSizeFormH()));
 
         FrameMain.jDialogSetup.pack();
         FrameMain.jDialogSetup.setVisible(true);
@@ -26,10 +29,13 @@ public class MainSetupDialog {
     public void constructJDialog(JDialog jDialog) {
         jDialog.setAlwaysOnTop(true);
         jDialog.setLayout(new GridBagLayout());
+        jDialog.setTitle("Настройки");
 
         constructPanelDialogLeft();
 
         constructPanelDialogRight();
+
+        constructPanelDialogDown();
 
         GridBagConstraints constraints = new GridBagConstraints();
         constraints.fill = GridBagConstraints.BOTH;
@@ -48,6 +54,15 @@ public class MainSetupDialog {
         constraints.weightx = 0.5;
         panelRight.setBackground(Color.GRAY.brighter());
         jDialog.add(new JScrollPane(panelRight), constraints);
+
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        constraints.weighty = 0.01;
+        constraints.weightx = 1;
+        constraints.gridwidth = 2;
+        panelDown.setBackground(Color.LIGHT_GRAY);
+
+        jDialog.add(panelDown, constraints);
     }
 
     private void constructPanelDialogLeft() {
@@ -71,11 +86,23 @@ public class MainSetupDialog {
 
     }
 
+    private void constructPanelDialogDown() {
+        panelDown.setLayout(new FlowLayout(FlowLayout.RIGHT));
+
+        JButton jButtonOk = new JButton("Ok");
+        JButton jButtonExit = new JButton("Exit");
+
+        panelDown.add(jButtonOk);
+        panelDown.add(jButtonExit);
+
+    }
+
 
     private void constructBtnTest(JPanel jPanel, JLabel[] jLabelsParameter, JTextArea[] jTextAreasParameter,
                                   JButton[] buttonParameter, int countElement, String nameParameter) {
         jPanel.setLayout(new GridBagLayout());
         GridBagConstraints constraints = new GridBagConstraints();
+
         constraints.anchor = GridBagConstraints.WEST;
         int panelEmptyY = countElement + 1;
         int x = 0;
@@ -118,6 +145,8 @@ public class MainSetupDialog {
         constraints.weightx = 0.1;
         constraints.weighty = 0.2;
         jPanelEmpty3.setBackground(Color.cyan);
+
+
         jPanel.add(jPanelEmpty3, constraints);
     }
 }
