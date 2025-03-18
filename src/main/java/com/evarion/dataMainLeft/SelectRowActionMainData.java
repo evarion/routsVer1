@@ -4,6 +4,8 @@ import com.evarion.dataRightBotton.DataDeliveryRBottom;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import static com.evarion.gui.DataPanel.dataSplitPaneHorizontal;
 
 
@@ -24,7 +26,6 @@ public class SelectRowActionMainData {
                         System.out.println("id выбрана строка = " + value);
                         result = Integer.parseInt(value);
                         DataDeliveryRBottom.runRightBottomDataSQL(result);
-
                     }
                 }
                 //  DataPanel.dataRightBottom.setVisible(false);
@@ -33,8 +34,21 @@ public class SelectRowActionMainData {
         });
     }
 
-    public void selectTest(final JTable jTable){
+    public void selectTest(final JTable jTable) {
 
+    }
+
+    public void selRowKeyboardMouse(final JTable jTable) {
+        jTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int row = jTable.rowAtPoint(e.getPoint());
+                int col = jTable.columnAtPoint(e.getPoint());
+                if (row >= 0 && col >= 0) {
+                    System.out.println("Mouse selected cell: (" + row + ", " + col + ")");
+                }
+            }
+        });
     }
 
     public void selectRowNew(final JTable jTable1) {// mouse and keyboard
@@ -47,10 +61,11 @@ public class SelectRowActionMainData {
                         column = i;
                         int row = jTable1.getSelectedRow();
                         String value = jTable1.getModel().getValueAt(row, column).toString();
-                        System.out.println("id выбрана строка из нового метода = " + value);
+
                         result = Integer.parseInt(value);
                         DataDeliveryRBottom.runRightBottomDataSQL(result);
                         DataDeliveryRBottom.runRightBottomDataSQLBudgetExpenses(result);
+                        System.out.println("id выбрана строка из нового метода = " + value);
                     }
                 }
                 dataSplitPaneHorizontal.updateUI(); //ok
@@ -60,4 +75,23 @@ public class SelectRowActionMainData {
             }
         });
     }
+
+    public void newSelectTest1(final JTable jTable1) {
+        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) { // Игнорируем промежуточные события
+                    int selectedRow = jTable1.getSelectedRow();
+                    if (selectedRow != -1) { // Проверяем, что строка выделена
+                        System.out.println("Selected row: " + selectedRow);
+                        for (int column = 0; column < jTable1.getColumnCount(); column++) {
+                            Object value = jTable1.getValueAt(selectedRow, column);
+                            System.out.println("Column " + column + ": " + value);
+                        }
+                    }
+                }
+            }
+        });
+    }
 }
+

@@ -111,7 +111,10 @@ public class DataDeliveryMain {
       //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         SelectRowActionMainData selectRowActionMainData = new SelectRowActionMainData();
         //selectRowActionMainData.selectRow(dataJTableMain);
-        selectRowActionMainData.selectRowNew(dataJTableMain);
+        selectRowActionMainData.selectRowNew(dataJTableMain);// идет замена на newSelectTest1
+        //selectRowActionMainData.selRowKeyboardMouse(dataJTableMain);
+        // selectRowActionMainData.newSelectTest1(dataJTableMain);
+
 
 
     }
